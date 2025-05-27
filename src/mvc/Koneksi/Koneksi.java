@@ -1,37 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package mvc.Koneksi;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-
 /**
  *
- * @author fibnu
+ * @author HP
  */
 public class Koneksi {
-    
+     // Variabel koneksi bersifat statik (agar bisa diakses tanpa buat objek)
     static Connection con;
-    
-    public static Connection connection()
-    {
-        if (con == null)
-        {
+
+    // Method untuk mendapatkan koneksi ke database
+    public static Connection connection() {
+        if (con == null) {
+            // Membuat objek data source untuk MySQL
             MysqlDataSource data = new MysqlDataSource();
-            data.setDatabaseName("simaja");
-            data.setUser("root");
-            data.setPassword("WhateverPassword");
-            try
-            {
-                con = data.getConnection();
-            }catch (SQLException ex)
-            {
-                System.out.println("No Connected");
+            data.setDatabaseName("simaja"); // Nama database
+            data.setUser("root");            // Username MySQL
+            data.setPassword("");            // Password MySQL (kosong)
+
+            try {
+                con = data.getConnection();  // Mencoba membuat koneksi
+            } catch (SQLException ex) {
+                System.out.println("Tidak konek: " + ex.getMessage());
             }
         }
         return con;
     }
-    
 }
