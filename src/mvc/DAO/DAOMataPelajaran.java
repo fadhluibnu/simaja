@@ -178,8 +178,9 @@ public class DAOMataPelajaran {
            while(rs.next())
            {
                Guru b = new Guru();
-               b.setId(rs.getInt("id"));               
-               b.setString(rs.getInt("nama"));
+               b.setId(rs.getInt("id"));     
+                b.setNip(rs.getString("nip"));
+                b.setNama(rs.getString("nama"));
                lb.add(b);
            }
            

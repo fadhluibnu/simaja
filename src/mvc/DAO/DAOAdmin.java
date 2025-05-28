@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mvc.DAO;
-import mvc.koneksi.Koneksi;
+import mvc.Koneksi.Koneksi;
 import mvc.Model.Admin;
 import mvc.DAOInterface.IAdmin;
 import java.sql.Connection;

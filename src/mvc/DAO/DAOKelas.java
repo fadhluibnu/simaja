@@ -4,7 +4,6 @@
  */
 package mvc.DAO;
 
-import com.mysql.cj.xdevapi.PreparableStatement;
 import mvc.Koneksi.Koneksi;
 import mvc.Model.Kelas;
 import mvc.DAOInterface.IKelas;

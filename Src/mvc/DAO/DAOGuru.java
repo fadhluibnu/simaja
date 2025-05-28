@@ -113,7 +113,8 @@ public class DAOGuru implements IGuru {
             while (rs.next()) {
                 Guru b = new Guru();
                 b.setId(rs.getInt("id"));
-                b.setNip(rs.getString("nim"));
+                b.setNip(rs.getString("nip"));
+                b.setUsername(rs.getString("username"));
                 b.setNama(rs.getString("nama"));
                 b.setAlamat(rs.getString("alamat"));
                 b.setNoTelp(rs.getString("noTelp"));
@@ -140,7 +141,8 @@ public class DAOGuru implements IGuru {
             while (rs.next()) {
                 Guru b = new Guru ();
                 b.setId(rs.getInt("id"));
-                b.setNip(rs.getString("nim"));
+                b.setNip(rs.getString("nip"));
+                b.setUsername(rs.getString("username"));
                 b.setNama(rs.getString("nama"));
                 b.setAlamat(rs.getString("alamat"));
                 b.setNoTelp(rs.getString("noTelp"));
