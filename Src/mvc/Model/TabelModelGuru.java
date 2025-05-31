@@ -13,7 +13,7 @@ import javax.swing.table.AbstractTableModel;
 public class TabelModelGuru extends AbstractTableModel{
     List<Guru> lb;
     
-    public TabelModelGuru(List<Guru> ib)
+    public TabelModelGuru(List<Guru> lb)
     {
         this.lb = lb;
     }  
