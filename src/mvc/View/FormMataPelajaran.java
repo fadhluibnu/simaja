@@ -4,18 +4,217 @@
  */
 package mvc.View;
 
+import javax.swing.*;
+import mvc.Controller.ControllerMataPelajaran;
+
 /**
  *
  * @author fibnu
  */
 public class FormMataPelajaran extends javax.swing.JFrame {
-
+    
+    ControllerMataPelajaran cbt;
+    
     /**
      * Creates new form FormMataPelajaran
      */
     public FormMataPelajaran() {
         initComponents();
+        cbt = new ControllerMataPelajaran(this);
+        cbt.isiTable();
+        cbt.isiComboGuru(nipPengajar);
     }
+
+    /**
+     * @return the btndelete
+     */
+    public javax.swing.JButton getBtndelete() {
+        return btndelete;
+    }
+
+    /**
+     * @return the btnedit
+     */
+    public javax.swing.JButton getBtnedit() {
+        return btnedit;
+    }
+
+    /**
+     * @return the btnreset
+     */
+    public javax.swing.JButton getBtnreset() {
+        return btnreset;
+    }
+
+    /**
+     * @return the btnsimpan
+     */
+    public javax.swing.JButton getBtnsimpan() {
+        return btnsimpan;
+    }
+
+    /**
+     * @return the carimatapelajaran
+     */
+    public javax.swing.JTextField getCarimatapelajaran() {
+        return carimatapelajaran;
+    }
+
+    /**
+     * @return the deskripsi
+     */
+    public javax.swing.JTextArea getDeskripsi() {
+        return deskripsi;
+    }
+
+    /**
+     * @return the jButton5
+     */
+    public javax.swing.JButton getjButton5() {
+        return jButton5;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @return the jLabel3
+     */
+    public javax.swing.JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    /**
+     * @return the jLabel4
+     */
+    public javax.swing.JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    /**
+     * @return the jLabel5
+     */
+    public javax.swing.JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    /**
+     * @return the jLabel6
+     */
+    public javax.swing.JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    /**
+     * @return the jLabel7
+     */
+    public javax.swing.JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    /**
+     * @return the jLabel8
+     */
+    public javax.swing.JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    /**
+     * @return the jLabel9
+     */
+    public javax.swing.JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    /**
+     * @return the jPanel1
+     */
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    /**
+     * @return the jPanel2
+     */
+    public javax.swing.JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    /**
+     * @return the jPanel3
+     */
+    public javax.swing.JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @return the jScrollPane2
+     */
+    public javax.swing.JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    /**
+     * @return the kembalikeberanda
+     */
+    public javax.swing.JButton getKembalikeberanda() {
+        return kembalikeberanda;
+    }
+
+    /**
+     * @return the kkm
+     */
+    public javax.swing.JTextField getKkm() {
+        return kkm;
+    }
+
+    /**
+     * @return the kodeMapel
+     */
+    public javax.swing.JTextField getKodeMapel() {
+        return kodeMapel;
+    }
+
+    /**
+     * @return the namaMapel
+     */
+    public javax.swing.JTextField getNamaMapel() {
+        return namaMapel;
+    }
+
+    /**
+     * @return the nipPengajar
+     */
+    public javax.swing.JComboBox<String> getNipPengajar() {
+        return nipPengajar;
+    }
+
+    /**
+     * @return the tabelMataPelajaran
+     */
+    public javax.swing.JTable getTabelMataPelajaran() {
+        return tabelMataPelajaran;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -368,6 +567,8 @@ public class FormMataPelajaran extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btndelete;
