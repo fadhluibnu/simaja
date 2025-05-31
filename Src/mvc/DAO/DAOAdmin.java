@@ -1,0 +1,188 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package mvc.DAO;
+import mvc.Koneksi.Koneksi;
+import mvc.Model.Admin;
+import mvc.DAOInterface.IAdmin;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+/**
+ *
+ * @author gansp
+ */
+public class DAOAdmin implements IAdmin {
+    Connection connection;
+
+    final String insert = "INSERT INTO admin (adminId, username, password, nama, email, noTelp, role, createdAt, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    final String update = "UPDATE admin SET adminid=?, username=?, password=?, nama=?, email=?, noTelp=?, role=?, createdAt=?, isActive=? WHERE id=?;";
+    final String delete = "DELETE FROM admin WHERE id=?;";
+    final String select = "SELECT * FROM admin;";
+    final String carinamaadmin = "SELECT * FROM admin WHERE nama LIKE ?;";
+
+     public DAOAdmin() {
+        connection = Koneksi.connection();
+    }
+
+    @Override
+    public void insert(Admin b) {
+        PreparedStatement statement = null;
+
+    try {
+        statement = connection.prepareStatement(insert);
+        statement.setString(1, b.getAdminId());
+        statement.setString(2, b.getUsername());
+        statement.setString(3, b.getPassword());
+        statement.setString(4, b.getNama());
+        statement.setString(5, b.getEmail());
+        statement.setString(6, b.getNoTelp());
+        statement.setString(7, b.getRole());
+        statement.setString(8, b.getCreatedAt());
+        statement.setString(9, b.getIsActive());
+        
+        statement.executeUpdate();
+
+
+
+    } catch (SQLException ex) {
+        System.out.println("Berhasil Input");
+    } finally {
+        try {
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Gagal Input");
+        }
+    }
+    }
+
+    @Override
+    public void update(Admin b) {
+        PreparedStatement statement = null;
+
+    try {
+        statement = connection.prepareStatement(insert);
+        statement.setString(1, b.getAdminId());
+        statement.setString(2, b.getUsername());
+        statement.setString(3, b.getPassword());
+        statement.setString(4, b.getNama());
+        statement.setString(5, b.getEmail());
+        statement.setString(6, b.getNoTelp());
+        statement.setString(7, b.getRole());
+        statement.setString(8, b.getCreatedAt());
+        statement.setString(9, b.getIsActive());
+        statement.setInt(10, b.getId());
+
+        statement.executeUpdate();
+
+    } catch (SQLException ex) {
+        System.out.println("Berhasil Update");
+    } finally {
+        try {
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println("Gagal Input");
+        }
+    }
+ 
+}
+
+    @Override
+    public void delete(int id) {
+        PreparedStatement statement = null;
+
+        try {
+            statement = connection.prepareStatement(delete);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Berhasil Delete");
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException ex) {
+                System.out.println("Gagal Update");
+            }
+        }
+    }
+
+    @Override
+    public List<Admin> getAll() {
+        List<Admin> lb = null;
+
+    try {
+        lb = new ArrayList<Admin>();
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(select);
+
+        while (rs.next()) {
+            Admin b = new Admin();
+            b.setId(rs.getInt("id"));
+            b.setAdminId(rs.getString("adminId"));
+            b.setEmail(rs.getString("email"));
+            b.setUsername(rs.getString("username"));
+            b.setPassword(rs.getString("password"));
+            b.setNama(rs.getString("nama"));
+            b.setEmail(rs.getString("email"));
+            b.setNoTelp(rs.getString("noTelp"));
+            b.setRole(rs.getString("role"));
+            b.setCreatedAt(rs.getString("createdAt"));
+            b.setIsActive(rs.getString("isActive"));
+            lb.add(b);
+        }
+
+    } catch (SQLException ex) {
+        Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, ex);
+    
+    }
+    return lb;
+    
+    }
+    
+
+    
+    @Override
+    public List<Admin> getCariNama(String nama) {
+        List<Admin> lb = null;
+
+        try {
+            lb = new ArrayList<Admin>();
+            PreparedStatement st = connection.prepareStatement(carinamaadmin);
+            st.setString(1, "%" + nama + "%");
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                Admin b = new Admin();
+                b.setId(rs.getInt("id"));
+                b.setAdminId(rs.getString("adminId"));
+                b.setEmail(rs.getString("email"));
+                b.setUsername(rs.getString("username"));
+                b.setPassword(rs.getString("password"));
+                b.setNama(rs.getString("nama"));
+                b.setEmail(rs.getString("email"));
+                b.setNoTelp(rs.getString("noTelp"));
+                b.setRole(rs.getString("role"));
+                b.setCreatedAt(rs.getString("createdAt"));
+                b.setIsActive(rs.getString("isActive"));
+                lb.add(b);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return lb;
+    }
+}    
+
+
+
+
