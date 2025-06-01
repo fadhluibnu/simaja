@@ -18,7 +18,7 @@ public class Koneksi {
             MysqlDataSource data = new MysqlDataSource();
             data.setDatabaseName("simaja");
             data.setUser("root");
-            data.setPassword("");
+            data.setPassword("WhateverPassword");
             try {
                 con = data.getConnection();
             } catch (SQLException ex) {

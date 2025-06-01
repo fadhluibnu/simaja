@@ -8,6 +8,8 @@ import mvc.DAOInterface.IMataPelajaran;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import mvc.Model.MataPelajaran;
 import mvc.Model.Guru;
 
@@ -17,10 +19,10 @@ import mvc.Model.Guru;
  */
 public class DAOMataPelajaran implements IMataPelajaran{
    Connection connection;
-   final String insert = "INSERT INTO matapelajaran (kodeMapel, namaMapel, kkm, deskripsi, nipPengajar) VALUES (?, ?, ?, ?, ?);";
+   final String insert = "INSERT INTO matapelajaran (id, kodeMapel, namaMapel, kkm, deskripsi, nipPengajar) VALUES (NULL, ?, ?, ?, ?, ?);";
    final String update = "UPDATE matapelajaran set kodeMapel=?, namaMapel=?, kkm=?, deskripsi=?, nipPengajar=? WHERE id=?";
    final String delete = "DELETE FROM matapelajaran where id=?;";
-   final String selectmatapelajaran = "SELECT * FROM matapelajaran";
+   final String selectmatapelajaran = "SELECT matapelajaran.* , guru.nip, guru.nama AS namaGuru FROM matapelajaran LEFT JOIN guru ON matapelajaran.nipPengajar = guru.nip";
    final String carimatapelajaran = "SELECT * FROM matapelajaran where nama like ?";
    final String selectguru = "SELECT * FROM guru";
    
@@ -29,7 +31,7 @@ public class DAOMataPelajaran implements IMataPelajaran{
        connection = Koneksi.connection();
    }
    
-   public void insert(MataPelajaran mp)
+   public void insert(MataPelajaran mp, JFrame frame)
    {
        PreparedStatement statement = null;
        try
@@ -38,19 +40,21 @@ public class DAOMataPelajaran implements IMataPelajaran{
            statement.setString(1, mp.getKodeMapel());
            statement.setString(2, mp.getNamaMapel());
            statement.setInt(3, mp.getKkm());
-           statement.setString(4, mp.getNipPengajar());
-           statement.setString(5, mp.getDeskripsi());
+           statement.setString(4, mp.getDeskripsi());
+           statement.setString(5, mp.getNipPengajar());
            statement.executeUpdate();
            
+           JOptionPane.showMessageDialog(frame, "Simpan Berhasil");
        }catch(SQLException ex)
        {
-           System.out.println("Gagal Melakukan Input");
+           System.out.println(ex.getMessage());
+           
+           JOptionPane.showMessageDialog(frame, "Simpan Gagal");
        } finally 
        {
            try
            {
                statement.close();
-               System.out.println("Berhasil Melakukan Input");
            }catch(SQLException ex)
            {
                System.out.println("Gagal Input");
@@ -67,8 +71,8 @@ public class DAOMataPelajaran implements IMataPelajaran{
            statement.setString(1, mp.getKodeMapel());
            statement.setString(2, mp.getNamaMapel());
            statement.setInt(3, mp.getKkm());
-           statement.setString(4, mp.getNipPengajar());
-           statement.setString(5, mp.getDeskripsi());
+           statement.setString(4, mp.getDeskripsi());
+           statement.setString(5, mp.getNipPengajar());
            statement.setInt(6, mp.getId());
            statement.executeUpdate();
        }catch (SQLException e)
@@ -125,7 +129,9 @@ public class DAOMataPelajaran implements IMataPelajaran{
                b.setId(rs.getInt("id"));
                b.setKodeMapel(rs.getString("kodeMapel"));
                b.setNamaMapel(rs.getString("namaMapel"));
+               b.setKkm(rs.getInt("kkm"));
                b.setNipPengajar(rs.getString("nipPengajar"));
+               b.setNamaGuru(rs.getString("namaGuru"));
                b.setDeskripsi(rs.getString("deskripsi"));
                lb.add(b);
            }
@@ -153,7 +159,9 @@ public class DAOMataPelajaran implements IMataPelajaran{
                b.setId(rs.getInt("id"));
                b.setKodeMapel(rs.getString("kodeMapel"));
                b.setNamaMapel(rs.getString("namaMapel"));
+               b.setKkm(rs.getInt("kkm"));
                b.setNipPengajar(rs.getString("nipPengajar"));
+               b.setNamaGuru(rs.getString("namaGuru"));
                b.setDeskripsi(rs.getString("deskripsi"));
                lb.add(b);
            }
@@ -161,32 +169,6 @@ public class DAOMataPelajaran implements IMataPelajaran{
        {
            Logger.getLogger(DAOMataPelajaran.class.getName()).log(Level.SEVERE, null, ex);
            
-       }
-       
-       return lb;
-   }
-   
-   public List<Guru> getAllGuru()
-   {
-       List<Guru> lb = null;
-       try
-       {
-           lb = new ArrayList<Guru>();
-           Statement st = connection.createStatement();
-           ResultSet rs = st.executeQuery(selectguru);
-           
-           while(rs.next())
-           {
-               Guru b = new Guru();
-               b.setId(rs.getInt("id"));     
-                b.setNip(rs.getString("nip"));
-                b.setNama(rs.getString("nama"));
-               lb.add(b);
-           }
-           
-       }catch(SQLException ex)
-       {
-           Logger.getLogger(DAOMataPelajaran.class.getName()).log(Level.SEVERE, null, ex);
        }
        
        return lb;

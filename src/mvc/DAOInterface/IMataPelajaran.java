@@ -4,6 +4,7 @@
  */
 package mvc.DAOInterface;
 import java.util.List;
+import javax.swing.JFrame;
 import mvc.Model.MataPelajaran;
 import mvc.Model.Guru;
 
@@ -14,11 +15,9 @@ import mvc.Model.Guru;
  */
 public interface IMataPelajaran {
     
-    public void insert(MataPelajaran b);
+    public void insert(MataPelajaran b, JFrame frame);
     public void update(MataPelajaran b);
     public void delete(int id);
     public List<MataPelajaran> getAll();
     public List<MataPelajaran> getCariNama(String nama);
-    
-    public List<Guru> getAllGuru();
 }

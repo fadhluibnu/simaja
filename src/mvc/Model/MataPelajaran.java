@@ -16,6 +16,7 @@ public class MataPelajaran {
     private Integer kkm;
     private String deskripsi;
     private String nipPengajar;
+    private String namaGuru;
     
     /**
      * @return the id
@@ -99,6 +100,20 @@ public class MataPelajaran {
      */
     public void setNipPengajar(String nipPengajar) {
         this.nipPengajar = nipPengajar;
+    }
+
+    /**
+     * @return the namaGuru
+     */
+    public String getNamaGuru() {
+        return namaGuru;
+    }
+
+    /**
+     * @param namaGuru the namaGuru to set
+     */
+    public void setNamaGuru(String namaGuru) {
+        this.namaGuru = namaGuru;
     }
     
     

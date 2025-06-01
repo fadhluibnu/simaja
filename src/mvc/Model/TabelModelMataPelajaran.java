@@ -27,7 +27,7 @@ public class TabelModelMataPelajaran extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 7;
     }
 
     @Override
@@ -35,15 +35,19 @@ public class TabelModelMataPelajaran extends AbstractTableModel {
         switch (columnIndex)
         {
             case 0:
-                return lb.get(rowIndex).getKodeMapel();
+                return lb.get(rowIndex).getId();
             case 1:
-                return lb.get(rowIndex).getNamaMapel();
+                return lb.get(rowIndex).getKodeMapel();
             case 2:
-                return lb.get(rowIndex).getKkm();
+                return lb.get(rowIndex).getNamaMapel();
             case 3:
-                return lb.get(rowIndex).getDeskripsi();
+                return lb.get(rowIndex).getKkm();
             case 4:
+                return lb.get(rowIndex).getDeskripsi();
+            case 5:
                 return lb.get(rowIndex).getNipPengajar();
+            case 6:
+                return lb.get(rowIndex).getNamaGuru();
             default:
                 return null;
         }
@@ -54,15 +58,19 @@ public class TabelModelMataPelajaran extends AbstractTableModel {
         switch (column)
         {
             case 0:
-                return "Kode Mapel";
+                return "ID";
             case 1:
-                return "Nama";
+                return "Kode Mapel";
             case 2:
-                return "KKM";
+                return "Nama";
             case 3:
-                return "Deskripsi";
+                return "KKM";
             case 4:
+                return "Deskripsi";
+            case 5:
                 return "NIP Pengajar";
+            case 6:
+                return "Nama Pengajar";
             default:
                 return null;
         }
