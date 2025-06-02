@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mvc.Model.Guru;
+import mvc.Model.MataPelajaran;
 /**
  *
  * @author HP
@@ -26,6 +28,8 @@ public class DAOJadwal implements IJadwal{
     final String delete = "DELETE FROM jadwal where id=? ;";
     final String select = "SELECT * FROM jadwal;";
     final String carijadwal = "SELECT * FROM jadwal where hari like ?";
+    final String selectguru = "SELECT * FROM guru";
+    final String selectmatapelajaran = "SELECT * FROM matapelajaran";
     
     public DAOJadwal(){
         connection = Koneksi.connection();
@@ -113,9 +117,11 @@ public class DAOJadwal implements IJadwal{
                 Jadwal j = new Jadwal();
                 j.setId(rs.getInt("id"));
                 j.setJadwalId(rs.getString("jadwalId"));
+                j.setHari(rs.getString("hari"));
                 j.setJamMulai(rs.getString("jamMulai"));
                 j.setJamSelesai(rs.getString("jamSelesai"));
                 j.setKelasId(rs.getString("kelasId"));
+                j.setNipGuru(rs.getString("nipGuru"));
                 j.setKodeMapel(rs.getString("kodeMapel"));
                 lb.add(j);
             }
@@ -137,9 +143,11 @@ public class DAOJadwal implements IJadwal{
                 Jadwal j = new Jadwal();
                 j.setId(rs.getInt("id"));
                 j.setJadwalId(rs.getString("jadwalId"));
+                j.setHari(rs.getString("hari"));
                 j.setJamMulai(rs.getString("jamMulai"));
                 j.setJamSelesai(rs.getString("jamSelesai"));
                 j.setKelasId(rs.getString("kelasId"));
+                j.setNipGuru(rs.getString("nipGuru"));
                 j.setKodeMapel(rs.getString("kodeMapel"));
                 lb.add(j);
             }
@@ -148,5 +156,52 @@ public class DAOJadwal implements IJadwal{
         }
         return lb;
     }
+
+    @Override
+    public List<Guru> getAllGuru() {
+        List<Guru> lb = null;
+        try{
+            lb = new ArrayList<Guru>();
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(selectguru);
+            while (rs.next()) {
+                Guru b = new Guru();
+                b.setId(rs.getInt("id"));
+                b.setNip(rs.getString("nip"));
+                b.setNama(rs.getString("nama"));
+                b.setAlamat(rs.getString("alamat"));
+                lb.add(b);
+            }
+        }catch (SQLException ex){
+            Logger.getLogger(DAOGuru.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lb;
+    }
+
+    @Override
+    public List<MataPelajaran> getAllMataPelajaran() {
+        List<MataPelajaran> lb = null;
+       try
+       {
+           lb = new ArrayList<MataPelajaran>();
+           Statement st = connection.createStatement();
+           ResultSet rs = st.executeQuery(selectmatapelajaran);
+           
+           while(rs.next())
+           {
+               MataPelajaran b = new MataPelajaran();
+               b.setId(rs.getInt("id"));
+               b.setKodeMapel(rs.getString("kodeMapel"));
+               b.setNamaMapel(rs.getString("namaMapel"));
+               lb.add(b);
+           }
+           
+       }catch(SQLException ex)
+       {
+           Logger.getLogger(DAOMataPelajaran.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
+       return lb;}
    
 }
