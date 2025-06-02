@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package mvc.View;
+import javax.swing.*;
+    import mvc.Controller.ControllerAdmin;
 
 /**
  *
@@ -10,12 +12,289 @@ package mvc.View;
  */
 public class FormAdmin extends javax.swing.JFrame {
 
+   ControllerAdmin cbt;
     /**
      * Creates new form FormAdmin
      */
     public FormAdmin() {
         initComponents();
+        cbt = new ControllerAdmin (this);
+        cbt.isiTable();
+        
+        }
+    
+
+    /**
+     * @return the Caributton
+     */
+    public javax.swing.JButton getCaributton() {
+        return Caributton;
     }
+
+    /**
+     * @return the Carinama
+     */
+    public javax.swing.JTextField getCarinama() {
+        return Carinama;
+    }
+
+    /**
+     * @return the Edit
+     */
+    public javax.swing.JButton getEdit() {
+        return Edit;
+    }
+
+    /**
+     * @return the Hapus
+     */
+    public javax.swing.JButton getHapus() {
+        return Hapus;
+    }
+
+    /**
+     * @return the J
+     */
+    public javax.swing.JLabel getJ() {
+        return J;
+    }
+
+    /**
+     * @return the Kembalikeberanda
+     */
+    public javax.swing.JButton getKembalikeberanda() {
+        return Kembalikeberanda;
+    }
+
+    /**
+     * @return the Resest
+     */
+    public javax.swing.JButton getResest() {
+        return Resest;
+    }
+
+    /**
+     * @return the Simpan
+     */
+    public javax.swing.JButton getSimpan() {
+        return Simpan;
+    }
+
+    /**
+     * @return the TableAdmin
+     */
+    public javax.swing.JTable getTableAdmin() {
+        return TableAdmin;
+    }
+
+    /**
+     * @return the adminId
+     */
+    public javax.swing.JTextField getAdminId() {
+        return adminId;
+    }
+
+    /**
+     * @return the createdAt
+     */
+    public javax.swing.JFormattedTextField getCreatedAt() {
+        return createdAt;
+    }
+
+    /**
+     * @return the email
+     */
+    public javax.swing.JTextField getEmail() {
+        return email;
+    }
+
+    /**
+     * @return the isActive
+     */
+    public javax.swing.JComboBox<String> getIsActive() {
+        return isActive;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @return the jLabel10
+     */
+    public javax.swing.JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    /**
+     * @return the jLabel11
+     */
+    public javax.swing.JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    /**
+     * @return the jLabel12
+     */
+    public javax.swing.JLabel getjLabel12() {
+        return jLabel12;
+    }
+
+    /**
+     * @return the jLabel13
+     */
+    public javax.swing.JLabel getjLabel13() {
+        return jLabel13;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @return the jLabel3
+     */
+    public javax.swing.JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    /**
+     * @return the jLabel4
+     */
+    public javax.swing.JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    /**
+     * @return the jLabel5
+     */
+    public javax.swing.JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    /**
+     * @return the jLabel7
+     */
+    public javax.swing.JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    /**
+     * @return the jLabel8
+     */
+    public javax.swing.JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    /**
+     * @return the jLabel9
+     */
+    public javax.swing.JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    /**
+     * @return the jPanel1
+     */
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    /**
+     * @return the jPanel2
+     */
+    public javax.swing.JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    /**
+     * @return the jPanel3
+     */
+    public javax.swing.JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    /**
+     * @return the jPanel4
+     */
+    public javax.swing.JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    /**
+     * @return the jPanel5
+     */
+    public javax.swing.JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @return the jScrollPane2
+     */
+    public javax.swing.JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    /**
+     * @return the jTable1
+     */
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+    /**
+     * @return the nama
+     */
+    public javax.swing.JTextField getNama() {
+        return nama;
+    }
+
+    /**
+     * @return the noTelp
+     */
+    public javax.swing.JTextField getNoTelp() {
+        return noTelp;
+    }
+
+    /**
+     * @return the password
+     */
+    public javax.swing.JTextField getPassword() {
+        return password;
+    }
+
+    /**
+     * @return the role
+     */
+    public javax.swing.JComboBox<String> getRole() {
+        return role;
+    }
+
+    /**
+     * @return the username
+     */
+    public javax.swing.JTextField getUsername() {
+        return username;
+    }
+
+    
+
+ 
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -358,6 +637,11 @@ public class FormAdmin extends javax.swing.JFrame {
         Caributton.setBackground(new java.awt.Color(204, 255, 255));
         Caributton.setForeground(new java.awt.Color(0, 0, 0));
         Caributton.setText("Cari");
+        Caributton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CaributtonActionPerformed(evt);
+            }
+        });
 
         Kembalikeberanda.setBackground(new java.awt.Color(255, 0, 0));
         Kembalikeberanda.setForeground(new java.awt.Color(0, 0, 0));
@@ -479,6 +763,11 @@ public class FormAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_KembalikeberandaActionPerformed
 
+    private void CaributtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaributtonActionPerformed
+        // TODO add your handling code here:
+        cbt.carinama();
+    }//GEN-LAST:event_CaributtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -513,7 +802,8 @@ public class FormAdmin extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Caributton;
     private javax.swing.JTextField Carinama;
