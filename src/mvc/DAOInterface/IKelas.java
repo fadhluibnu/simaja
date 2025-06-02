@@ -6,6 +6,7 @@ package mvc.DAOInterface;
 
 import java.util.List;
 import mvc.Model.Kelas;
+import mvc.Model.Guru;
 /**
  *
  * @author nabig
@@ -16,4 +17,6 @@ public interface IKelas {
     public void delete(int kelasId);
     public List<Kelas> getAll();
     public List<Kelas> getCariNamaKelas(String namaKelas);
+    
+    public List<Guru> getAllGuru();
 }

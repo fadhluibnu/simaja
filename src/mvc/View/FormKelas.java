@@ -4,17 +4,179 @@
  */
 package mvc.View;
 
+import javax.swing.*;
+import mvc.Controller.ControllerKelas;
+
 /**
  *
  * @author nabig
  */
 public class FormKelas extends javax.swing.JFrame {
+    
+    ControllerKelas cbt;
+    
 
     /**
      * Creates new form FormKelas
      */
     public FormKelas() {
         initComponents();
+        cbt = new ControllerKelas(this);
+        cbt.isiTabel();
+    }
+
+    /**
+     * @return the Cari
+     */
+    public javax.swing.JButton getCari() {
+        return Cari;
+    }
+
+    /**
+     * @return the Hapus
+     */
+    public javax.swing.JButton getHapus() {
+        return Hapus;
+    }
+
+    /**
+     * @return the Reset
+     */
+    public javax.swing.JButton getReset() {
+        return Reset;
+    }
+
+    /**
+     * @return the Simpan
+     */
+    public javax.swing.JButton getSimpan() {
+        return Simpan;
+    }
+
+    /**
+     * @return the Ubah
+     */
+    public javax.swing.JButton getUbah() {
+        return Ubah;
+    }
+
+    /**
+     * @return the capacity
+     */
+    public javax.swing.JTextField getCapacity() {
+        return capacity;
+    }
+
+    /**
+     * @return the cariNama
+     */
+    public javax.swing.JTextField getCariNama() {
+        return cariNama;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @return the jLabel3
+     */
+    public javax.swing.JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    /**
+     * @return the jLabel4
+     */
+    public javax.swing.JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    /**
+     * @return the jLabel5
+     */
+    public javax.swing.JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    /**
+     * @return the jLabel6
+     */
+    public javax.swing.JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    /**
+     * @return the jLabel7
+     */
+    public javax.swing.JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    /**
+     * @return the jPanel1
+     */
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @return the jTable1
+     */
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+    /**
+     * @return the jTextField3
+     */
+    public javax.swing.JTextField getjTextField3() {
+        return jTextField3;
+    }
+
+    /**
+     * @return the kelasId
+     */
+    public javax.swing.JTextField getKelasId() {
+        return kelasId;
+    }
+
+    /**
+     * @return the kembalikeberanda
+     */
+    public javax.swing.JButton getKembalikeberanda() {
+        return kembalikeberanda;
+    }
+
+    /**
+     * @return the namaKelas
+     */
+    public javax.swing.JTextField getNamaKelas() {
+        return namaKelas;
+    }
+
+    /**
+     * @return the nipWaliKelas
+     */
+    public javax.swing.JComboBox<String> getNipWaliKelas() {
+        return nipWaliKelas;
     }
 
     /**
@@ -108,6 +270,11 @@ public class FormKelas extends javax.swing.JFrame {
         Cari.setBackground(new java.awt.Color(102, 102, 255));
         Cari.setForeground(new java.awt.Color(0, 0, 0));
         Cari.setText("Cari");
+        Cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CariActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -125,7 +292,7 @@ public class FormKelas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(kembalikeberanda)
-                .addGap(249, 249, 249)
+                .addGap(210, 210, 210)
                 .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -152,9 +319,9 @@ public class FormKelas extends javax.swing.JFrame {
                         .addComponent(Ubah)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Hapus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Reset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -175,7 +342,7 @@ public class FormKelas extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(kelasId)
                                     .addComponent(namaKelas, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -220,7 +387,7 @@ public class FormKelas extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(nipWaliKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(68, 68, 68)
+                        .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Simpan)
                             .addComponent(Ubah)
@@ -239,6 +406,11 @@ public class FormKelas extends javax.swing.JFrame {
     private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SimpanActionPerformed
+
+    private void CariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CariActionPerformed
+        // TODO add your handling code here:
+        cbt.carinamakelas();
+    }//GEN-LAST:event_CariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,7 +446,8 @@ public class FormKelas extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cari;
     private javax.swing.JButton Hapus;

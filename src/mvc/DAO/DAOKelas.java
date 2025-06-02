@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mvc.Model.Guru;
 /**
  *
  * @author nabig
@@ -27,6 +28,7 @@ public class DAOKelas implements IKelas{
     final String delete = "DELETE FROM kelas where id=? ;";
     final String select = "SELECT * FROM kelas;";
     final String carinamakelas = "SELECT * FROM kelas where namaKelas like ?";
+    final String selectguru = "SELECT * FROM guru";
     
     public DAOKelas(){
         connection = Koneksi.connection();
@@ -142,6 +144,27 @@ public class DAOKelas implements IKelas{
         } catch (SQLException ex){
             Logger.getLogger(DAOKelas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return lb;
+    }
+
+    @Override
+    public List<Guru> getAllGuru() {
+        List<Guru> lb = null;
+        try{
+            lb = new ArrayList<Guru>();
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(selectguru);
+            while (rs.next()) {
+                Guru b = new Guru();
+                b.setId(rs.getInt("id"));
+                b.setNip(rs.getString("nip"));
+                b.setNama(rs.getString("nama"));
+                lb.add(b);
+            }
+        }catch (SQLException ex){
+            Logger.getLogger(DAOGuru.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return lb;
     }
     
