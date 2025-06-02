@@ -4,47 +4,34 @@
  */
 package mvc.Model;
 
-
 /**
  *
- * @author gansp
+ * @author NBN0C
  */
-public class Admin {
-    private Integer id;
-    private String adminId;
+public class Guru {
+    
+    private String nip;
     private String username;
     private String password;
     private String nama;
-    private String email;
+    private String alamat;
     private String noTelp;
-    private String role;
+    private String email;
     private String isActive;
+    private String createdAt;
+    private Integer id;
     /**
-     * @return the id
+     * @return the nip
      */
-    public Integer getId() {
-        return id;
+    public String getNip() {
+        return nip;
     }
 
     /**
-     * @param id the id to set
+     * @param nip the nip to set
      */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the adminId
-     */
-    public String getAdminId() {
-        return adminId;
-    }
-
-    /**
-     * @param adminId the adminId to set
-     */
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
+    public void setNip(String nip) {
+        this.nip = nip;
     }
 
     /**
@@ -90,17 +77,17 @@ public class Admin {
     }
 
     /**
-     * @return the email
+     * @return the alamat
      */
-    public String getEmail() {
-        return email;
+    public String getAlamat() {
+        return alamat;
     }
 
     /**
-     * @param email the email to set
+     * @param alamat the alamat to set
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 
     /**
@@ -118,17 +105,17 @@ public class Admin {
     }
 
     /**
-     * @return the role
+     * @return the email
      */
-    public String getRole() {
-        return role;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * @param role the role to set
+     * @param email the email to set
      */
-    public void setRole(String role) {
-        this.role = role;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -145,10 +132,36 @@ public class Admin {
         this.isActive = isActive;
     }
 
-  
     /**
-     * @return the adminId
+     * @return the createdAt
      */
-  
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    /**
+     * @param createdAt the createdAt to set
+     */
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+    
+
+
     
 }

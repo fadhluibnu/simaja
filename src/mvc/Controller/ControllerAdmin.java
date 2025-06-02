@@ -19,7 +19,8 @@ public class ControllerAdmin {
     FormAdmin frame;
     IAdmin implAdmin;
     List<Admin> lAdmin;
-   
+    
+    Integer id;
     
     public ControllerAdmin (FormAdmin frame)
     {
@@ -50,4 +51,101 @@ public class ControllerAdmin {
             JOptionPane.showMessageDialog(null, "Silahkan Pilih Data");
         }
     }
+    public void isiField(int row) {
+    this.id = lAdmin.get(row).getId();
+    frame.getAdminId().setText(lAdmin.get(row).getAdminId().toString());
+    frame.getEmail().setText(lAdmin.get(row).getEmail());
+    frame.getNama().setText(lAdmin.get(row).getNama());
+    frame.getNoTelp().setText(lAdmin.get(row).getNoTelp());
+    frame.getPassword().setText(lAdmin.get(row).getPassword());
+    frame.getUsername().setText(lAdmin.get(row).getUsername());
+    frame.getIsActive().setSelectedItem(lAdmin.get(row).getIsActive());
+    frame.getRole().setSelectedItem(lAdmin.get(row).getRole());
+
+    }
+     public void insert(){
+        if(
+                !frame.getAdminId().getText().trim().isEmpty() &
+                !frame.getEmail().getText().trim().isEmpty() & 
+                !frame.getNama().getText().trim().isEmpty() & 
+                !frame.getNoTelp().getText().trim().isEmpty() & 
+                !frame.getPassword().getText().trim().isEmpty() & 
+                !frame.getUsername().getText().trim().isEmpty() & 
+                frame.getIsActive().getSelectedIndex() != 0 & 
+                frame.getRole().getSelectedIndex() != 0 
+          )
+        {
+            Admin b = new Admin();
+            b.setAdminId(frame.getAdminId().getText());
+            b.setEmail(frame.getEmail().getText());
+            b.setNama(frame.getAdminId().getText());
+            b.setNoTelp(frame.getEmail().getText());
+            b.setPassword(frame.getAdminId().getText());
+            b.setUsername(frame.getEmail().getText());
+            b.setIsActive(frame.getIsActive().getSelectedItem().toString());
+            b.setRole(frame.getRole().getSelectedItem().toString());
+            
+          implAdmin.insert(b);
+            
+        } else
+        {
+            JOptionPane.showMessageDialog(frame, "Data Tidak Boleh Kosong");
+        }
+    }
+        public void reset()
+    {
+        frame.getAdminId().setText("");
+        frame.getEmail().setText("");
+        frame.getNama().setText("");
+        frame.getNoTelp().setText("");
+        frame.getPassword().setText("");
+        frame.getUsername().setText("");
+        frame.getIsActive().setSelectedIndex(0);
+        frame.getRole().setSelectedIndex(0);
+
+    }
+    public void update(){
+        if(
+                !frame.getAdminId().getText().trim().isEmpty() &
+                !frame.getEmail().getText().trim().isEmpty() & 
+                !frame.getNama().getText().trim().isEmpty() & 
+                !frame.getNoTelp().getText().trim().isEmpty() & 
+                !frame.getPassword().getText().trim().isEmpty() & 
+                !frame.getUsername().getText().trim().isEmpty() & 
+                frame.getIsActive().getSelectedIndex() != 0 & 
+                frame.getRole().getSelectedIndex() != 0 
+          )
+        {
+            Admin b = new Admin();
+            b.setAdminId(frame.getAdminId().getText());
+            b.setEmail(frame.getEmail().getText());
+            b.setNama(frame.getAdminId().getText());
+            b.setNoTelp(frame.getEmail().getText());
+            b.setPassword(frame.getAdminId().getText());
+            b.setUsername(frame.getEmail().getText());
+            b.setIsActive(frame.getIsActive().getSelectedItem().toString());
+            b.setRole(frame.getRole().getSelectedItem().toString());
+            b.setId(this.id);
+            
+          implAdmin.update(b);
+            
+        } else
+        {
+            JOptionPane.showMessageDialog(frame, "Data Tidak Boleh Kosong");
+        }
+    }
+    public void delete()
+    {
+        if(this.id != 0)
+        {
+            int id = this.id;
+            implAdmin.delete(id);
+            JOptionPane.showMessageDialog(null, "Hapus Data Sukses");
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Pilih Data Yang Akan Dihapus");
+        }
+    }
+    
+    
 }

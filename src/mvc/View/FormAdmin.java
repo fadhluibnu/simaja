@@ -52,12 +52,7 @@ public class FormAdmin extends javax.swing.JFrame {
         return Hapus;
     }
 
-    /**
-     * @return the J
-     */
-    public javax.swing.JLabel getJ() {
-        return J;
-    }
+
 
     /**
      * @return the Kembalikeberanda
@@ -94,12 +89,7 @@ public class FormAdmin extends javax.swing.JFrame {
         return adminId;
     }
 
-    /**
-     * @return the createdAt
-     */
-    public javax.swing.JFormattedTextField getCreatedAt() {
-        return createdAt;
-    }
+
 
     /**
      * @return the email
@@ -329,8 +319,6 @@ public class FormAdmin extends javax.swing.JFrame {
         role = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         isActive = new javax.swing.JComboBox<>();
-        J = new javax.swing.JLabel();
-        createdAt = new javax.swing.JFormattedTextField();
         jPanel4 = new javax.swing.JPanel();
         Simpan = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
@@ -501,7 +489,7 @@ public class FormAdmin extends javax.swing.JFrame {
 
         jLabel12.setText("Role");
 
-        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SuperAdmin", "Admin" }));
+        role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Role", "SuperAdmin", "Admin" }));
         role.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 roleActionPerformed(evt);
@@ -510,14 +498,12 @@ public class FormAdmin extends javax.swing.JFrame {
 
         jLabel13.setText("Status");
 
-        isActive.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tidak Aktif" }));
+        isActive.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Status", "Aktif", "Tidak Aktif" }));
         isActive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 isActiveActionPerformed(evt);
             }
         });
-
-        J.setText("Tanggal Pembuatan");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -527,24 +513,17 @@ public class FormAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(createdAt)
-                        .addContainerGap())
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(J))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(isActive, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(33, 33, 33))))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(isActive, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(33, 33, 33))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -559,11 +538,7 @@ public class FormAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(isActive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(J)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(createdAt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
@@ -571,10 +546,20 @@ public class FormAdmin extends javax.swing.JFrame {
         Simpan.setBackground(new java.awt.Color(51, 255, 0));
         Simpan.setForeground(new java.awt.Color(0, 0, 0));
         Simpan.setText("Simpan");
+        Simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SimpanActionPerformed(evt);
+            }
+        });
 
         Edit.setBackground(new java.awt.Color(255, 255, 0));
         Edit.setForeground(new java.awt.Color(0, 0, 0));
         Edit.setText("Edit");
+        Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditActionPerformed(evt);
+            }
+        });
 
         Hapus.setBackground(new java.awt.Color(255, 0, 51));
         Hapus.setForeground(new java.awt.Color(255, 255, 255));
@@ -587,6 +572,11 @@ public class FormAdmin extends javax.swing.JFrame {
 
         Resest.setForeground(new java.awt.Color(255, 255, 255));
         Resest.setText("Reset");
+        Resest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -626,6 +616,11 @@ public class FormAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TableAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableAdminMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(TableAdmin);
 
         Carinama.addActionListener(new java.awt.event.ActionListener() {
@@ -753,6 +748,9 @@ public class FormAdmin extends javax.swing.JFrame {
 
     private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
         // TODO add your handling code here:
+        cbt.delete();
+        cbt.isiTable();
+        
     }//GEN-LAST:event_HapusActionPerformed
 
     private void CarinamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarinamaActionPerformed
@@ -767,6 +765,31 @@ public class FormAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         cbt.carinama();
     }//GEN-LAST:event_CaributtonActionPerformed
+
+    private void TableAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableAdminMouseClicked
+        // TODO add your handling code here:
+        int row = TableAdmin.rowAtPoint (evt.getPoint());
+        cbt.isiField(row);
+    }//GEN-LAST:event_TableAdminMouseClicked
+
+    private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
+        // TODO add your handling code here:
+        cbt.insert();
+        cbt.isiTable();
+        cbt.reset();
+    }//GEN-LAST:event_SimpanActionPerformed
+
+    private void ResestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResestActionPerformed
+        // TODO add your handling code here:
+        cbt.reset();
+    }//GEN-LAST:event_ResestActionPerformed
+
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+        // TODO add your handling code here:
+        cbt.update();
+        cbt.isiTable();
+        cbt.reset();
+    }//GEN-LAST:event_EditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -809,13 +832,11 @@ public class FormAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField Carinama;
     private javax.swing.JButton Edit;
     private javax.swing.JButton Hapus;
-    private javax.swing.JLabel J;
     private javax.swing.JButton Kembalikeberanda;
     private javax.swing.JButton Resest;
     private javax.swing.JButton Simpan;
     private javax.swing.JTable TableAdmin;
     private javax.swing.JTextField adminId;
-    private javax.swing.JFormattedTextField createdAt;
     private javax.swing.JTextField email;
     private javax.swing.JComboBox<String> isActive;
     private javax.swing.JLabel jLabel1;
