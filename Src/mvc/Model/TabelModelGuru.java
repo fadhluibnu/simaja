@@ -13,6 +13,7 @@ import javax.swing.table.AbstractTableModel;
 public class TabelModelGuru extends AbstractTableModel{
     List<Guru> lb;
     
+    
     public TabelModelGuru(List<Guru> lb)
     {
         this.lb = lb;
@@ -20,12 +21,12 @@ public class TabelModelGuru extends AbstractTableModel{
 
     @Override
     public int getRowCount() {
-        return 6;
+        return lb.size();
     }
 
     @Override
     public int getColumnCount() {
-         return lb.size();
+         return 10;
     }
     
 
