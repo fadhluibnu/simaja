@@ -24,7 +24,7 @@ import mvc.Model.Guru;
 public class DAOKelas implements IKelas{
     Connection connection;
     final String insert = "INSERT INTO kelas(kelasId, namaKelas, nipWaliKelas, tahunAjaran, capacity) VALUES (?, ?, ?, ?, ?);";
-    final String update = "UPDATE kelas set kelasId=?, namaKelas=?, nipWaliKelas=?, tahunAjaran=?, cepacity=? where id=? ;";
+    final String update = "UPDATE kelas set kelasId=?, namaKelas=?, nipWaliKelas=?, tahunAjaran=?, capacity=? where id=? ;";
     final String delete = "DELETE FROM kelas where id=? ;";
     final String select = "SELECT * FROM kelas;";
     final String carinamakelas = "SELECT * FROM kelas where namaKelas like ?";
@@ -69,7 +69,7 @@ public class DAOKelas implements IKelas{
             statement.setInt(6, b.getId());
             statement.executeUpdate();
         }catch (SQLException ex){
-            System.out.println("Gagal Update");
+            System.out.println(ex.getMessage());
         }finally {
             try {
                 statement.close();
@@ -89,7 +89,7 @@ public class DAOKelas implements IKelas{
             statement.setInt(1, kelasId);
             statement.execute();
         }catch (SQLException ex){
-            System.out.println("Berhasil Delete");
+            System.out.println(ex.getMessage());
         }finally{
             try{
                 statement.close();
