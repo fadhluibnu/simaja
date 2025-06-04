@@ -16,10 +16,10 @@ public class Admin {
     private String password;
     private String nama;
     private String email;
+    private String alamat;
     private String noTelp;
     private String role;
     private String isActive;
-    private String createdAt;
     /**
      * @return the id
      */
@@ -103,8 +103,7 @@ public class Admin {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    /**
+       /**
      * @return the noTelp
      */
     public String getNoTelp() {
@@ -144,20 +143,6 @@ public class Admin {
      */
     public void setIsActive(String isActive) {
         this.isActive = isActive;
-    }
-
-    /**
-     * @return the createdAt
-     */
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    /**
-     * @param createdAt the createdAt to set
-     */
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
     }
 
   
