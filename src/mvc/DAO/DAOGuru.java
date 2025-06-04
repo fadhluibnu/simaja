@@ -23,11 +23,11 @@ import java.util.logging.Logger;
  */
 public class DAOGuru implements IGuru {
     Connection connection;
-    final String insert = "INSERT INTO guru(nip,username,password,nama,alamat,noTelp,email,isActive,createdAt) Values (?,?,?,?,?,?,?,?)";
-    final String updte = " UPDATE Guru set nip=?, username=?, password=?, nama=?, alamat=?, noTelp=?, email=?, isActive=?, createdAt=? where id=? ;";
-    final String delate = "DELETE FROM guru whare id=? ;";
-    final String select = "SELECT * FROM guru";
-    final String carinamaguru = "SELECT * FROM guru where nama like ?";
+    final String insert = "INSERT INTO Guru(nip,username,password,nama,alamat,noTelp,email,isActive) Values (?,?,?,?,?,?,?,?)";
+    final String updte = " UPDATE Guru set nip=?, username=?, password=?, nama=?, alamat=?, noTelp=?, email=?, isActive=? where id=? ;"; // kalau terakhir ga pakai koma
+    final String delate = "DELETE FROM Guru where id=? ;"; // jika mau dihapus semua tinggal hapus where nya 
+    final String select = "SELECT * FROM Guru";
+    final String carinamaguru = "SELECT * FROM Guru where nama like ?"; //tinggal ganti kalau seumpama nama ya nama kalau username ya username
     
     public DAOGuru (){
         connection = Koneksi.connection();
@@ -45,10 +45,11 @@ public class DAOGuru implements IGuru {
             statement.setString(6, b.getNoTelp());
             statement.setString(7, b.getEmail());
             statement.setString(8, b.getIsActive());
-            statement.setString(9, b.getCreatedAt());
             statement.executeUpdate();                       
         }catch (SQLException ex){
-            System.out.println("berhasil input");
+//            System.out.println("berhasil input");
+            System.out.println(ex.getMessage());
+
         } finally {
             try{
                 statement.close();
@@ -70,12 +71,12 @@ public class DAOGuru implements IGuru {
             statement.setString(6, b.getNoTelp());
             statement.setString(7, b.getEmail());
             statement.setString(8, b.getIsActive());
-            statement.setString(9, b.getCreatedAt()); 
-            statement.setInt(10, b.getId());
+            statement.setInt(9, b.getId());// id harus di bawah
+            
             statement.executeUpdate();
             
         } catch (SQLException ex){
-            System.out.println("berhasil input");
+            System.out.println(ex.getMessage());
         } finally{
             try{
                 statement.close();
@@ -89,18 +90,18 @@ public class DAOGuru implements IGuru {
     PreparedStatement statement = null;
     try {
         statement = connection.prepareStatement(delate);
-        statement.setInt(1, id);
+        statement.setInt(1, id);  //untuk hapus semua di ilangin ini
         statement.executeUpdate();
         System.out.println("Berhasil Delete");
     } catch (SQLException ex) {
-        System.out.println("Gagal Delete");
+        System.out.println(ex.getMessage());
     } finally {
         try {
             if (statement != null) {
                 statement.close();
             }
         } catch (SQLException ex) {
-            System.out.println("Gagal Menutup Statement");
+            System.out.println(ex.getMessage());
         }
     }
 }
@@ -115,12 +116,12 @@ public class DAOGuru implements IGuru {
                 b.setId(rs.getInt("id"));
                 b.setNip(rs.getString("nip"));
                 b.setUsername(rs.getString("username"));
+                b.setPassword(rs.getString("password"));
                 b.setNama(rs.getString("nama"));
                 b.setAlamat(rs.getString("alamat"));
                 b.setNoTelp(rs.getString("noTelp"));
                 b.setEmail(rs.getString("email"));
                 b.setIsActive(rs.getString("isActive"));
-                b.setCreatedAt(rs.getString("createdAt"));
                 lb.add(b);
             }
         }catch (SQLException ex){
@@ -143,12 +144,13 @@ public class DAOGuru implements IGuru {
                 b.setId(rs.getInt("id"));
                 b.setNip(rs.getString("nip"));
                 b.setUsername(rs.getString("username"));
+                b.setPassword(rs.getString("password"));
                 b.setNama(rs.getString("nama"));
                 b.setAlamat(rs.getString("alamat"));
                 b.setNoTelp(rs.getString("noTelp"));
                 b.setEmail(rs.getString("email"));
                 b.setIsActive(rs.getString("isActive"));
-                b.setCreatedAt(rs.getString("createdAt"));
+
                 lb.add(b);
             }
         } catch (SQLException ex) {

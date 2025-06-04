@@ -61,7 +61,7 @@ public class FormGuruNew extends javax.swing.JFrame {
      * @return the BtnUbah
      */
     public javax.swing.JButton getBtnUbah() {
-        return BtnUbah;
+        return BtnReset;
     }
 
     /**
@@ -128,13 +128,6 @@ public class FormGuruNew extends javax.swing.JFrame {
     }
 
     /**
-     * @return the TglPmbtGuru
-     */
-    public javax.swing.JTextField getTglPmbtGuru() {
-        return TglPmbtGuru;
-    }
-
-    /**
      * @return the jLabel1
      */
     public javax.swing.JLabel getjLabel1() {
@@ -160,13 +153,6 @@ public class FormGuruNew extends javax.swing.JFrame {
      */
     public javax.swing.JLabel getjLabel12() {
         return jLabel12;
-    }
-
-    /**
-     * @return the jLabel13
-     */
-    public javax.swing.JLabel getjLabel13() {
-        return jLabel13;
     }
 
     /**
@@ -242,9 +228,12 @@ public class FormGuruNew extends javax.swing.JFrame {
     /**
      * @return the jTextField3
      */
-    public javax.swing.JTextField getjTextField3() {
-        return jTextField3;
+    public javax.swing.JTextField getUserGuru() {
+        return UserGuru;
     }
+    
+
+    
 
 
 
@@ -263,7 +252,7 @@ public class FormGuruNew extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         NipGuru = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        UserGuru = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         PassGuru = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -278,8 +267,6 @@ public class FormGuruNew extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         CmbGuru = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        TglPmbtGuru = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblGuruN = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
@@ -288,7 +275,7 @@ public class FormGuruNew extends javax.swing.JFrame {
         BtnSimpan = new javax.swing.JButton();
         BtnEdit = new javax.swing.JButton();
         BtnDelete = new javax.swing.JButton();
-        BtnUbah = new javax.swing.JButton();
+        BtnReset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -328,11 +315,14 @@ public class FormGuruNew extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Status Guru");
 
-        CmbGuru.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Tidak Aktif" }));
+        CmbGuru.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "status", "Aktif", "Tidak Aktif" }));
+        CmbGuru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmbGuruActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Status");
-
-        jLabel13.setText("Tanggal Pembuatan");
 
         TblGuruN.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -345,24 +335,60 @@ public class FormGuruNew extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TblGuruN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblGuruNMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TblGuruN);
 
         jLabel14.setText("Cari Nama");
 
+        CarinamaGuru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CarinamaGuruActionPerformed(evt);
+            }
+        });
+
         BtnCari.setBackground(new java.awt.Color(51, 51, 255));
         BtnCari.setText("Cari");
+        BtnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariActionPerformed(evt);
+            }
+        });
 
         BtnSimpan.setBackground(new java.awt.Color(0, 255, 0));
         BtnSimpan.setText("Simpan");
+        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanActionPerformed(evt);
+            }
+        });
 
         BtnEdit.setBackground(new java.awt.Color(255, 204, 51));
         BtnEdit.setText("Edit");
+        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditActionPerformed(evt);
+            }
+        });
 
         BtnDelete.setBackground(new java.awt.Color(255, 0, 51));
         BtnDelete.setText("Delete");
+        BtnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDeleteActionPerformed(evt);
+            }
+        });
 
-        BtnUbah.setBackground(new java.awt.Color(102, 102, 102));
-        BtnUbah.setText("Ubah");
+        BtnReset.setBackground(new java.awt.Color(102, 102, 102));
+        BtnReset.setText("Reset");
+        BtnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnResetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -375,10 +401,7 @@ public class FormGuruNew extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(NipGuru, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(12, 12, 12)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel13)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(TglPmbtGuru)))
+                            .addComponent(UserGuru, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(CmbGuru, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,10 +411,10 @@ public class FormGuruNew extends javax.swing.JFrame {
                                     .addGap(117, 117, 117)
                                     .addComponent(jLabel4))
                                 .addComponent(jLabel5)
-                                .addComponent(PassGuru, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel11)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(111, 111, 111)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(PassGuru, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(105, 105, 105)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(EmailGuru, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
@@ -418,7 +441,7 @@ public class FormGuruNew extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(BtnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BtnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -438,10 +461,11 @@ public class FormGuruNew extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(KmblGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel14)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel6))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
@@ -459,7 +483,7 @@ public class FormGuruNew extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(NipGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UserGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(NmaGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -478,18 +502,15 @@ public class FormGuruNew extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(EmailGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NotlpGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
+                            .addComponent(NotlpGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CmbGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TglPmbtGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CmbGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtnSimpan)
                             .addComponent(BtnEdit)
                             .addComponent(BtnDelete)
-                            .addComponent(BtnUbah)))
+                            .addComponent(BtnReset)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
@@ -500,6 +521,54 @@ public class FormGuruNew extends javax.swing.JFrame {
     private void KmblGuruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KmblGuruActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_KmblGuruActionPerformed
+
+    private void TblGuruNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblGuruNMouseClicked
+        // TODO add your handling code here:
+        int row = TblGuruN.rowAtPoint(evt.getPoint());
+        cbt.isiField(row);
+    }//GEN-LAST:event_TblGuruNMouseClicked
+
+    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+       cbt.insert();
+       cbt.isiTable();
+       cbt.reset();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnSimpanActionPerformed
+
+    private void CmbGuruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbGuruActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmbGuruActionPerformed
+
+    private void BtnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResetActionPerformed
+
+        cbt.reset();
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BtnResetActionPerformed
+
+    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
+        // TODO add your handling code here:
+        cbt.updte();
+        cbt.isiTable();
+        cbt.reset();
+    }//GEN-LAST:event_BtnEditActionPerformed
+
+    private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
+        // TODO add your handling code here:
+        cbt.delete();
+        cbt.isiTable();
+        cbt.reset();
+    }//GEN-LAST:event_BtnDeleteActionPerformed
+
+    private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        // TODO add your handling code here:
+        cbt.CariNama();
+        cbt.isiTableCariNama();
+    }//GEN-LAST:event_BtnCariActionPerformed
+
+    private void CarinamaGuruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarinamaGuruActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CarinamaGuruActionPerformed
 
     /**
      * @param args the command line arguments
@@ -541,8 +610,8 @@ public class FormGuruNew extends javax.swing.JFrame {
     private javax.swing.JButton BtnCari;
     private javax.swing.JButton BtnDelete;
     private javax.swing.JButton BtnEdit;
+    private javax.swing.JButton BtnReset;
     private javax.swing.JButton BtnSimpan;
-    private javax.swing.JButton BtnUbah;
     private javax.swing.JTextField CarinamaGuru;
     private javax.swing.JComboBox<String> CmbGuru;
     private javax.swing.JTextField EmailGuru;
@@ -552,12 +621,11 @@ public class FormGuruNew extends javax.swing.JFrame {
     private javax.swing.JTextField NotlpGuru;
     private javax.swing.JTextField PassGuru;
     private javax.swing.JTable TblGuruN;
-    private javax.swing.JTextField TglPmbtGuru;
+    private javax.swing.JTextField UserGuru;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -568,6 +636,7 @@ public class FormGuruNew extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    
 }

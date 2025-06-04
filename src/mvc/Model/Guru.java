@@ -18,7 +18,6 @@ public class Guru {
     private String noTelp;
     private String email;
     private String isActive;
-    private String createdAt;
     private Integer id;
     /**
      * @return the nip
@@ -133,20 +132,6 @@ public class Guru {
     }
 
     /**
-     * @return the createdAt
-     */
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    /**
-     * @param createdAt the createdAt to set
-     */
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    /**
      * @return the id
      */
     public Integer getId() {
@@ -160,6 +145,7 @@ public class Guru {
         this.id = id;
     }
     
+
     
 
 

@@ -23,7 +23,7 @@ public class DAOAdmin implements IAdmin {
     Connection connection;
 
     final String insert = "INSERT INTO admin (adminId, username, password, nama, email, noTelp, role, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-    final String update = "UPDATE admin SET adminid=?, username=?, password=?, nama=?, email=?, noTelp=?, role=?, isActive=? WHERE id=?;";
+    final String update = "UPDATE admin SET adminId=?, username=?, password=?, nama=?, email=?, noTelp=?, role=?, isActive=? WHERE id=?;";
     final String delete = "DELETE FROM admin WHERE id=?;";
     final String select = "SELECT * FROM admin;";
     final String carinamaadmin = "SELECT * FROM admin WHERE username LIKE ?;";
@@ -44,7 +44,6 @@ public class DAOAdmin implements IAdmin {
         statement.setString(3, b.getPassword());
         statement.setString(4, b.getNama());
         statement.setString(5, b.getEmail());
-        
         statement.setString(6, b.getNoTelp());
         statement.setString(7, b.getRole());
         statement.setString(8, b.getIsActive());
@@ -69,23 +68,21 @@ public class DAOAdmin implements IAdmin {
         PreparedStatement statement = null;
 
     try {
-        statement = connection.prepareStatement(insert);
+        statement = connection.prepareStatement(update);
         statement.setString(1, b.getAdminId());
         statement.setString(2, b.getUsername());
         statement.setString(3, b.getPassword());
         statement.setString(4, b.getNama());
         statement.setString(5, b.getEmail());
-        
         statement.setString(6, b.getNoTelp());
         statement.setString(7, b.getRole());
         statement.setString(8, b.getIsActive());
-           
-        statement.setInt(10, b.getId());
+        statement.setInt(9, b.getId());
 
         statement.executeUpdate();
 
     } catch (SQLException ex) {
-        System.out.println("Berhasil Update");
+        System.out.println(ex.getMessage());
     } finally {
         try {
             statement.close();
@@ -133,7 +130,6 @@ public class DAOAdmin implements IAdmin {
             b.setUsername(rs.getString("username"));
             b.setPassword(rs.getString("password"));
             b.setNama(rs.getString("nama"));
-           
             b.setNoTelp(rs.getString("noTelp"));
             b.setRole(rs.getString("role"));
             b.setIsActive(rs.getString("isActive"));
@@ -168,7 +164,6 @@ public class DAOAdmin implements IAdmin {
                 b.setPassword(rs.getString("password"));
                 b.setNama(rs.getString("nama"));
                 b.setEmail(rs.getString("email"));
-               
                 b.setNoTelp(rs.getString("noTelp"));
                 b.setRole(rs.getString("role"));
                 b.setIsActive(rs.getString("isActive"));

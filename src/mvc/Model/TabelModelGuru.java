@@ -13,19 +13,21 @@ import javax.swing.table.AbstractTableModel;
 public class TabelModelGuru extends AbstractTableModel{
     List<Guru> lb;
     
+    
     public TabelModelGuru(List<Guru> lb)
     {
         this.lb = lb;
     }  
 
     @Override
-    public int getRowCount() {
-        return 6;
+    public int getColumnCount() {
+         return 9;
     }
 
+
     @Override
-    public int getColumnCount() {
-         return lb.size();
+    public int getRowCount() {
+        return lb.size();
     }
     
 
@@ -41,7 +43,7 @@ public class TabelModelGuru extends AbstractTableModel{
            case 3:
                return lb.get(rowIndex).getPassword();
            case 4:
-               return lb.get(rowIndex). getNama();
+               return lb.get(rowIndex).getNama();
            case 5:
                return lb.get(rowIndex).getAlamat();
            case 6:
@@ -49,9 +51,7 @@ public class TabelModelGuru extends AbstractTableModel{
            case 7:
                return lb.get(rowIndex).getEmail();
            case 8:
-               return lb.get(rowIndex).getCreatedAt();
-           case 9:
-               return lb.get(rowIndex) .getIsActive();   
+               return lb.get(rowIndex).getIsActive();             
            default:
                return null;
         }
@@ -76,9 +76,7 @@ public class TabelModelGuru extends AbstractTableModel{
                return "NoTelp";
            case 7 :
                return "Email";
-           case 8: 
-               return " CreatedAt";
-           case 9:
+           case 8:
                return "IsActive";
            default : 
                return null;

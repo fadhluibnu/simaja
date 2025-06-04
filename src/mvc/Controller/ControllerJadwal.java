@@ -22,12 +22,14 @@ import mvc.DAO.DAOMataPelajaran;
 import mvc.DAOInterface.IGuru;
 import mvc.DAOInterface.IKelas;
 import mvc.DAOInterface.IMataPelajaran;
+
 /**
  *
  * @author HP
  */
 
 public class ControllerJadwal {
+
     FormJadwal frame;
     IJadwal impIJadwal;
     IGuru implGuru;
@@ -37,58 +39,61 @@ public class ControllerJadwal {
     List<Guru> lguru;
     List<MataPelajaran> lmatapelajaran;
     List<Kelas> lkelas;
-    
+
     Integer id;
-    
+
     private ArrayList<String> guruNipList = new ArrayList<>();
     private ArrayList<String> kelasList = new ArrayList<>();
     private ArrayList<String> mapelList = new ArrayList<>();
-    public ControllerJadwal (FormJadwal frame){
+
+    public ControllerJadwal(FormJadwal frame) {
         this.frame = frame;
         impIJadwal = new DAOJadwal();
         ljadwal = impIJadwal.getAll();
-        
+
         implGuru = new DAOGuru();
         lguru = implGuru.getAll();
-        
+
         implKelas = new DAOKelas();
         lkelas = implKelas.getAll();
-        
+
         implMapel = new DAOMataPelajaran();
         lmatapelajaran = implMapel.getAll();
     }
-           
-    public void isiTabel(){
-    ljadwal = impIJadwal.getAll();
-    TabelModelJadwal tmb = new TabelModelJadwal(ljadwal);
-    frame.getDsnTabelJadwal().setModel(tmb);
+
+    public void isiTabel() {
+        ljadwal = impIJadwal.getAll();
+        TabelModelJadwal tmb = new TabelModelJadwal(ljadwal);
+        frame.getDsnTabelJadwal().setModel(tmb);
     }
-    
-    public void isiTabelCariNama(){
-    ljadwal = impIJadwal.getCariJadwal(frame.getCarijadwal().getSelectedItem().toString());
-    TabelModelJadwal tmb = new TabelModelJadwal(ljadwal);
-    frame.getDsnTabelJadwal().setModel(tmb);
+
+    public void isiTabelCariNama() {
+        ljadwal = impIJadwal.getCariJadwal(frame.getCarijadwal().getSelectedItem().toString());
+        TabelModelJadwal tmb = new TabelModelJadwal(ljadwal);
+        frame.getDsnTabelJadwal().setModel(tmb);
     }
-    
-    public void carinama(){
-        if (!frame.getCarijadwal().getSelectedItem().toString().trim().isEmpty()){
+
+    public void carinama() {
+        if (!frame.getCarijadwal().getSelectedItem().toString().trim().isEmpty()) {
             impIJadwal.getCariJadwal(frame.getCarijadwal().getSelectedItem().toString());
             isiTabelCariNama();
-        }else {
+        } else {
             JOptionPane.showMessageDialog(frame, "Silahkan Pilih Data");
         }
     }
-    public void reset(){
-        frame.getJadwalId().setText("");        
-        frame.getHari().setSelectedItem("");
+
+    public void reset() {
+        frame.getJadwalId().setText("");
+        frame.getHari().setSelectedIndex(0);
         frame.getJamMulai().setText("");
         frame.getJamSelesai().setText("");
-        frame.getKelasId().setSelectedItem("");
-        frame.getNipGuru().setSelectedItem("");
-        frame.getKodeMapel().setSelectedItem("");
+        frame.getKelasId().setSelectedIndex(0);
+        frame.getNipGuru().setSelectedIndex(0);
+        frame.getKodeMapel().setSelectedIndex(0);
 
     }
-    public void isiField(int row){
+
+    public void isiField(int row) {
         this.id = ljadwal.get(row).getId();
         frame.getJadwalId().setText(ljadwal.get(row).getJadwalId().toString());
         frame.getHari().setSelectedItem(ljadwal.get(row).getHari());
@@ -98,79 +103,81 @@ public class ControllerJadwal {
         frame.getNipGuru().setSelectedItem(lguru.get(row).getNip());
         frame.getKodeMapel().setSelectedItem(lmatapelajaran.get(row).getKodeMapel());
     }
-    public void insert(String nipguru , String idkelas , String kodemapel ){
-    if (!frame.getJadwalId().getText().trim().isEmpty()&
-        frame.getHari().getSelectedIndex()!= 0 &
-        !frame.getJamMulai().getText().trim().isEmpty()&
-        !frame.getJamSelesai().getText().trim().isEmpty()&
-        frame.getKelasId().getSelectedIndex()!= 0 &
-        frame.getNipGuru().getSelectedIndex()!= 0 &
-        frame.getKodeMapel().getSelectedIndex()!= 0 ){
-        
-        Jadwal j = new Jadwal();
-        j.setJadwalId(frame.getJadwalId().getText());
-        j.setHari(frame.getHari().getSelectedItem().toString());
-        j.setJamMulai(frame.getJamMulai().getText());
-        j.setJamSelesai(frame.getJamSelesai().getText());
-        j.setKelasId(idkelas);
-        j.setNipGuru(nipguru);
-        j.setKodeMapel(kodemapel);
-        
-        impIJadwal.insert(j);
-        JOptionPane.showMessageDialog(null, "Simpan Data Sukses");
-    } else {
-        JOptionPane.showMessageDialog(frame, "Data Tidak Boleh Kosong");
+
+    public void insert(String nipguru, String idkelas, String kodemapel) {
+        if (!frame.getJadwalId().getText().trim().isEmpty()
+                & frame.getHari().getSelectedIndex() != 0
+                & !frame.getJamMulai().getText().trim().isEmpty()
+                & !frame.getJamSelesai().getText().trim().isEmpty()
+                & frame.getKelasId().getSelectedIndex() != 0
+                & frame.getNipGuru().getSelectedIndex() != 0
+                & frame.getKodeMapel().getSelectedIndex() != 0) {
+
+            Jadwal j = new Jadwal();
+            j.setJadwalId(frame.getJadwalId().getText());
+            j.setHari(frame.getHari().getSelectedItem().toString());
+            j.setJamMulai(frame.getJamMulai().getText());
+            j.setJamSelesai(frame.getJamSelesai().getText());
+            j.setKelasId(idkelas);
+            j.setNipGuru(nipguru);
+            j.setKodeMapel(kodemapel);
+
+            impIJadwal.insert(j);
+            JOptionPane.showMessageDialog(null, "Simpan Data Sukses");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Data Tidak Boleh Kosong");
         }
     }
-    
-    public void update(String nipguru , String idkelas , String kodemapel){
-        if (!frame.getJadwalId().getText().trim().isEmpty()&
-        frame.getHari().getSelectedIndex()!= 0 &
-        !frame.getJamMulai().getText().trim().isEmpty()&
-        !frame.getJamSelesai().getText().trim().isEmpty()&
-        frame.getKelasId().getSelectedIndex()!= 0 &
-        frame.getNipGuru().getSelectedIndex()!= 0 &
-        frame.getKodeMapel().getSelectedIndex()!= 0 ){
-        
-        Jadwal j = new Jadwal();
-        j.setId(this.id);
-        j.setJadwalId(frame.getJadwalId().getText());
-        j.setHari(frame.getHari().getSelectedItem().toString());
-        j.setJamMulai(frame.getJamMulai().getText());
-        j.setJamSelesai(frame.getJamSelesai().getText());
-        j.setKelasId(idkelas);
-        j.setNipGuru(nipguru);
-        j.setKodeMapel(kodemapel);
-        
-        impIJadwal.update(j);
-    
+
+    public void update(String nipguru, String idkelas, String kodemapel) {
+        if (!frame.getJadwalId().getText().trim().isEmpty()
+                & frame.getHari().getSelectedIndex() != 0
+                & !frame.getJamMulai().getText().trim().isEmpty()
+                & !frame.getJamSelesai().getText().trim().isEmpty()
+                & frame.getKelasId().getSelectedIndex() != 0
+                & frame.getNipGuru().getSelectedIndex() != 0
+                & frame.getKodeMapel().getSelectedIndex() != 0) {
+
+            Jadwal j = new Jadwal();
+            j.setId(this.id);
+            j.setJadwalId(frame.getJadwalId().getText());
+            j.setHari(frame.getHari().getSelectedItem().toString());
+            j.setJamMulai(frame.getJamMulai().getText());
+            j.setJamSelesai(frame.getJamSelesai().getText());
+            j.setKelasId(idkelas);
+            j.setNipGuru(nipguru);
+            j.setKodeMapel(kodemapel);
+
+            impIJadwal.update(j);
+
             JOptionPane.showMessageDialog(null, "Update Data Sukses");
         } else {
             JOptionPane.showMessageDialog(frame, "Pilih Data Yang Akan Dirubah");
         }
     }
-    
-    public void delete(){
-        if (this.id != 0){
+
+    public void delete() {
+        if (this.id != 0) {
             int id = this.id;
             impIJadwal.delete(id);
-        JOptionPane.showMessageDialog(null, "Hapus Data Sukses");
+            JOptionPane.showMessageDialog(null, "Hapus Data Sukses");
         } else {
-        JOptionPane.showMessageDialog(frame, "Pilih Data Yang Akan Dihapus");
+            JOptionPane.showMessageDialog(frame, "Pilih Data Yang Akan Dihapus");
         }
     }
-    
+
     public String formatGuruForComboBox(Guru guru) {
         return guru.getNip() + " - " + guru.getNip();
     }
-    
+
     public String formatKelasForComboBox(Kelas kelas) {
-        return kelas.getKelasId()+ " - " + kelas.getNamaKelas();
+        return kelas.getKelasId() + " - " + kelas.getNamaKelas();
     }
-    
+
     public String formatMatapelajaranForComboBox(MataPelajaran mapel) {
-        return mapel.getKodeMapel()+ " - " + mapel.getNamaMapel();
+        return mapel.getKodeMapel() + " - " + mapel.getNamaMapel();
     }
+
     public String getSelectedGuruNIP(JComboBox<String> comboBox) {
         int selectedIndex = comboBox.getSelectedIndex();
 
@@ -188,7 +195,7 @@ public class ControllerJadwal {
             return null;
         }
     }
-    
+
     public String getSelectedIdKelas(JComboBox<String> comboBox) {
         int selectedIndex = comboBox.getSelectedIndex();
 
@@ -206,7 +213,7 @@ public class ControllerJadwal {
             return null;
         }
     }
-    
+
     public String getSelectedKodeMapel(JComboBox<String> comboBox) {
         int selectedIndex = comboBox.getSelectedIndex();
 
@@ -224,7 +231,7 @@ public class ControllerJadwal {
             return null;
         }
     }
-    
+
     public void isiComboGuru(JComboBox<String> comboBox) {
         // Ambil data guru
         lguru = implGuru.getAll();
@@ -247,7 +254,7 @@ public class ControllerJadwal {
             guruNipList.add(guru.getNip());
         }
     }
-    
+
     public void isiComboKelas(JComboBox<String> comboBox) {
         // Ambil data guru
         lkelas = implKelas.getAll();
@@ -270,7 +277,7 @@ public class ControllerJadwal {
             kelasList.add(kelas.getKelasId());
         }
     }
-    
+
     public void isiComboMataPelajaran(JComboBox<String> comboBox) {
         // Ambil data guru
         lmatapelajaran = implMapel.getAll();
