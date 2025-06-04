@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mvc.Model.Guru;
 /**
  *
  * @author nabig
@@ -23,10 +24,11 @@ import java.util.logging.Logger;
 public class DAOKelas implements IKelas{
     Connection connection;
     final String insert = "INSERT INTO kelas(kelasId, namaKelas, nipWaliKelas, tahunAjaran, capacity) VALUES (?, ?, ?, ?, ?);";
-    final String update = "UPDATE kelas set kelasId=?, namaKelas=?, nipWaliKelas=?, tahunAjaran=?, cepacity=? where id=? ;";
+    final String update = "UPDATE kelas set kelasId=?, namaKelas=?, nipWaliKelas=?, tahunAjaran=?, capacity=? where id=? ;";
     final String delete = "DELETE FROM kelas where id=? ;";
     final String select = "SELECT * FROM kelas;";
     final String carinamakelas = "SELECT * FROM kelas where namaKelas like ?";
+    final String selectguru = "SELECT * FROM guru";
     
     public DAOKelas(){
         connection = Koneksi.connection();
@@ -67,7 +69,7 @@ public class DAOKelas implements IKelas{
             statement.setInt(6, b.getId());
             statement.executeUpdate();
         }catch (SQLException ex){
-            System.out.println("Gagal Update");
+            System.out.println(ex.getMessage());
         }finally {
             try {
                 statement.close();
@@ -87,7 +89,7 @@ public class DAOKelas implements IKelas{
             statement.setInt(1, kelasId);
             statement.execute();
         }catch (SQLException ex){
-            System.out.println("Berhasil Delete");
+            System.out.println(ex.getMessage());
         }finally{
             try{
                 statement.close();
@@ -142,6 +144,27 @@ public class DAOKelas implements IKelas{
         } catch (SQLException ex){
             Logger.getLogger(DAOKelas.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return lb;
+    }
+
+    @Override
+    public List<Guru> getAllGuru() {
+        List<Guru> lb = null;
+        try{
+            lb = new ArrayList<Guru>();
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(selectguru);
+            while (rs.next()) {
+                Guru b = new Guru();
+                b.setId(rs.getInt("id"));
+                b.setNip(rs.getString("nip"));
+                b.setNama(rs.getString("nama"));
+                lb.add(b);
+            }
+        }catch (SQLException ex){
+            Logger.getLogger(DAOGuru.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return lb;
     }
     
