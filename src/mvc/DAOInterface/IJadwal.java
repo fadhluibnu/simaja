@@ -6,6 +6,8 @@ package mvc.DAOInterface;
 
 import java.util.List;
 import mvc.Model.Jadwal;
+import mvc.Model.Guru;
+import mvc.Model.MataPelajaran;
 
 /**
  *
@@ -17,4 +19,6 @@ public interface IJadwal {
     public void delete (int id);
     public List<Jadwal> getAll();
     public List<Jadwal> getCariJadwal(String hari);
+    
+   
 }

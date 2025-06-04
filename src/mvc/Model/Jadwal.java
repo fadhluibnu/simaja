@@ -18,6 +18,7 @@ public class Jadwal {
     private String kelasId;
     private String nipGuru;
     private String kodeMapel;
+//    private String namaGuru;
     /**
      * @return the Id
      */
@@ -129,5 +130,19 @@ public class Jadwal {
     public void setKodeMapel(String kodeMapel) {
         this.kodeMapel = kodeMapel;
     }
-  
+
+    /**
+     * @return the namaGuru
+     */
+//    public String getNamaGuru() {
+//        return namaGuru;
+//    }
+//
+//    /**
+//     * @param namaGuru the namaGuru to set
+//     */
+//    public void setNamaGuru(String namaGuru) {
+//        this.namaGuru = namaGuru;
+//    }
+//  
 }

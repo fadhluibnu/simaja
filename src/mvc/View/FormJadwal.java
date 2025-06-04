@@ -4,17 +4,241 @@
  */
 package mvc.View;
 
+import javax.swing.*;
+import mvc.Controller.ControllerJadwal;
 /**
  *
  * @author HP
  */
 public class FormJadwal extends javax.swing.JFrame {
-
+    ControllerJadwal cbt;
     /**
      * Creates new form FormJadwal
      */
     public FormJadwal() {
         initComponents();
+        cbt = new ControllerJadwal(this);
+        cbt.isiTabel();
+        cbt.isiComboGuru(nipGuru);
+        cbt.isiComboKelas(kelasId);
+        cbt.isiComboMataPelajaran(kodeMapel);
+    }
+
+    /**
+     * @return the btnBackJadwal
+     */
+    public javax.swing.JButton getBtnBackJadwal() {
+        return btnBackJadwal;
+    }
+
+    /**
+     * @return the btnBatalJatwal
+     */
+    public javax.swing.JButton getBtnBatalJatwal() {
+        return btnBatalJatwal;
+    }
+
+    /**
+     * @return the btnCariHari
+     */
+    public javax.swing.JButton getBtnCariHari() {
+        return btnCariHari;
+    }
+
+    /**
+     * @return the btnHapusJadwal
+     */
+    public javax.swing.JButton getBtnHapusJadwal() {
+        return btnHapusJadwal;
+    }
+
+    /**
+     * @return the btnSimpanJadwal
+     */
+    public javax.swing.JButton getBtnSimpanJadwal() {
+        return btnSimpanJadwal;
+    }
+
+    /**
+     * @return the btnUbahJadwal
+     */
+    public javax.swing.JButton getBtnUbahJadwal() {
+        return btnUbahJadwal;
+    }
+
+    /**
+     * @return the carijadwal
+     */
+    public javax.swing.JComboBox<String> getCarijadwal() {
+        return carijadwal;
+    }
+
+    /**
+     * @return the dsnTabelJadwal
+     */
+    public javax.swing.JTable getDsnTabelJadwal() {
+        return dsnTabelJadwal;
+    }
+
+    /**
+     * @return the hari
+     */
+    public javax.swing.JComboBox<String> getHari() {
+        return hari;
+    }
+
+    /**
+     * @return the jFrame1
+     */
+    public javax.swing.JFrame getjFrame1() {
+        return jFrame1;
+    }
+
+    /**
+     * @return the jFrame2
+     */
+    public javax.swing.JFrame getjFrame2() {
+        return jFrame2;
+    }
+
+    /**
+     * @return the jLabel1
+     */
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    /**
+     * @return the jLabel10
+     */
+    public javax.swing.JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    /**
+     * @return the jLabel2
+     */
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    /**
+     * @return the jLabel3
+     */
+    public javax.swing.JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    /**
+     * @return the jLabel4
+     */
+    public javax.swing.JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    /**
+     * @return the jLabel5
+     */
+    public javax.swing.JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    /**
+     * @return the jLabel6
+     */
+    public javax.swing.JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    /**
+     * @return the jLabel7
+     */
+    public javax.swing.JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    /**
+     * @return the jLabel8
+     */
+    public javax.swing.JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    /**
+     * @return the jLabel9
+     */
+    public javax.swing.JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    /**
+     * @return the jPanel1
+     */
+    public javax.swing.JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    /**
+     * @return the jPanel2
+     */
+    public javax.swing.JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    /**
+     * @return the jRadioButton1
+     */
+    public javax.swing.JRadioButton getjRadioButton1() {
+        return jRadioButton1;
+    }
+
+    /**
+     * @return the jScrollPane1
+     */
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    /**
+     * @return the jadwalId
+     */
+    public javax.swing.JTextField getJadwalId() {
+        return jadwalId;
+    }
+
+    /**
+     * @return the jamMulai
+     */
+    public javax.swing.JFormattedTextField getJamMulai() {
+        return jamMulai;
+    }
+
+    /**
+     * @return the jamSelesai
+     */
+    public javax.swing.JFormattedTextField getJamSelesai() {
+        return jamSelesai;
+    }
+
+    /**
+     * @return the kelasId
+     */
+    public javax.swing.JComboBox<String> getKelasId() {
+        return kelasId;
+    }
+
+    /**
+     * @return the kodeMapel
+     */
+    public javax.swing.JComboBox<String> getKodeMapel() {
+        return kodeMapel;
+    }
+
+    /**
+     * @return the nipGuru
+     */
+    public javax.swing.JComboBox<String> getNipGuru() {
+        return nipGuru;
     }
 
     /**
@@ -30,6 +254,7 @@ public class FormJadwal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jFrame1 = new javax.swing.JFrame();
         jFrame2 = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnBackJadwal = new javax.swing.JButton();
@@ -84,6 +309,17 @@ public class FormJadwal extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
@@ -107,7 +343,7 @@ public class FormJadwal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(btnBackJadwal)
-                .addGap(104, 104, 104)
+                .addGap(172, 172, 172)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -151,7 +387,7 @@ public class FormJadwal extends javax.swing.JFrame {
             }
         });
 
-        hari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senin", "Selasa", "Rabu", "Kamis", "Jumat" }));
+        hari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Hari --", "Senin", "Selasa", "Rabu", "Kamis", "Jumat" }));
         hari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hariActionPerformed(evt);
@@ -180,6 +416,11 @@ public class FormJadwal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        dsnTabelJadwal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dsnTabelJadwalMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(dsnTabelJadwal);
 
         kelasId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -197,6 +438,11 @@ public class FormJadwal extends javax.swing.JFrame {
         jLabel9.setText("Search (Hari) :");
 
         carijadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senin", "Selasa", "Rabu", "Kamis", "Jumat" }));
+        carijadwal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carijadwalActionPerformed(evt);
+            }
+        });
 
         btnSimpanJadwal.setBackground(new java.awt.Color(153, 255, 255));
         btnSimpanJadwal.setForeground(new java.awt.Color(0, 0, 0));
@@ -255,7 +501,11 @@ public class FormJadwal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(kodeMapel, 0, 138, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -265,10 +515,6 @@ public class FormJadwal extends javax.swing.JFrame {
                             .addComponent(kelasId, 0, 138, Short.MAX_VALUE)
                             .addComponent(nipGuru, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(kodeMapel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -285,41 +531,44 @@ public class FormJadwal extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jamMulai)
-                                .addComponent(hari, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(hari, 0, 133, Short.MAX_VALUE)
                                 .addComponent(jamSelesai)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addGap(83, 83, 83)
+                        .addComponent(btnSimpanJadwal)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnUbahJadwal)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnHapusJadwal)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnBatalJatwal)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(carijadwal, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCariHari))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(btnSimpanJadwal)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnUbahJadwal)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnHapusJadwal)
-                            .addGap(33, 33, 33)
-                            .addComponent(btnBatalJatwal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(carijadwal, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCariHari)))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jadwalId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(carijadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCariHari))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(hari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
@@ -343,14 +592,16 @@ public class FormJadwal extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(kodeMapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpanJadwal)
                     .addComponent(btnUbahJadwal)
                     .addComponent(btnHapusJadwal)
                     .addComponent(btnBatalJatwal))
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -385,33 +636,41 @@ public class FormJadwal extends javax.swing.JFrame {
 
     private void btnSimpanJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanJadwalActionPerformed
         // TODO add your handling code here:
-        jwl.insert();
-        jwl.isiTable();
-        jwl.reset();
+        String nip = cbt.getSelectedGuruNIP(nipGuru);
+        String idkelas = cbt.getSelectedIdKelas(kelasId);
+        String kodemapel = cbt.getSelectedKodeMapel(kodeMapel);
+        
+        cbt.insert(nip,idkelas,kodemapel);
+        cbt.isiTabel();
+        cbt.reset();
     }//GEN-LAST:event_btnSimpanJadwalActionPerformed
 
     private void btnCariHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariHariActionPerformed
         // TODO add your handling code here:
-        jwl.carijadwal
+        cbt.carinama();
     }//GEN-LAST:event_btnCariHariActionPerformed
 
     private void btnUbahJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahJadwalActionPerformed
         // TODO add your handling code here:
-        jwl.update();
-        jwl.isiTable();
-        jwl.reset();
+        String nip = cbt.getSelectedGuruNIP(nipGuru);
+        String idkelas = cbt.getSelectedIdKelas(kelasId);
+        String kodemapel = cbt.getSelectedKodeMapel(kodeMapel);
+        
+        cbt.update(nip,idkelas,kodemapel);
+        cbt.isiTabel();
+        cbt.reset();
     }//GEN-LAST:event_btnUbahJadwalActionPerformed
 
     private void btnHapusJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusJadwalActionPerformed
         // TODO add your handling code here:
-        jwl.delete();
-        jwl.isiTable();
-        jwl.reset();
+        cbt.delete();
+        cbt.isiTabel();
+        cbt.reset();
     }//GEN-LAST:event_btnHapusJadwalActionPerformed
 
     private void btnBatalJatwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalJatwalActionPerformed
         // TODO add your handling code here:
-        jwl.reset();
+        cbt.reset();
     }//GEN-LAST:event_btnBatalJatwalActionPerformed
 
     private void kodeMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeMapelActionPerformed
@@ -422,6 +681,16 @@ public class FormJadwal extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnBackJadwalActionPerformed
+
+    private void carijadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carijadwalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_carijadwalActionPerformed
+
+    private void dsnTabelJadwalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dsnTabelJadwalMouseClicked
+        // TODO add your handling code here:
+        int row = dsnTabelJadwal.rowAtPoint(evt.getPoint());
+        cbt.isiField(row);
+    }//GEN-LAST:event_dsnTabelJadwalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -457,6 +726,7 @@ public class FormJadwal extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackJadwal;
@@ -482,6 +752,7 @@ public class FormJadwal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jadwalId;
