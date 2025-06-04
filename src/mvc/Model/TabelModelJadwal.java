@@ -43,7 +43,9 @@ public class TabelModelJadwal extends AbstractTableModel{
             case 6:
                 return "NIPGuru";
             case 7:
-                return "KodeMapel";   
+                return "KodeMapel";
+//            case 8:
+//                return "NamaGuru";
             default:
                 return null;
         }
@@ -68,6 +70,8 @@ public class TabelModelJadwal extends AbstractTableModel{
                 return lb.get(rowIndex).getNipGuru();
             case 7:
                 return lb.get(rowIndex).getKodeMapel();
+//            case 8:
+//                return lb.get(rowIndex).getNamaGuru();
             default:
                  return null; 
         }

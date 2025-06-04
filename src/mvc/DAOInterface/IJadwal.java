@@ -20,7 +20,5 @@ public interface IJadwal {
     public List<Jadwal> getAll();
     public List<Jadwal> getCariJadwal(String hari);
     
-    public List<Guru> getAllGuru();
-    public List<MataPelajaran> getAllMataPelajaran();
    
 }

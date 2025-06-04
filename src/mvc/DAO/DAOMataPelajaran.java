@@ -15,7 +15,7 @@ import mvc.Model.Guru;
  *
  * @author fibnu
  */
-public class DAOMataPelajaran {
+public class DAOMataPelajaran implements IMataPelajaran{
    Connection connection;
    final String insert = "INSERT INTO matapelajaran (kodeMapel, namaMapel, kkm, deskripsi, nipPengajar) VALUES (?, ?, ?, ?, ?);";
    final String update = "UPDATE matapelajaran set kodeMapel=?, namaMapel=?, kkm=?, deskripsi=?, nipPengajar=? WHERE id=?";

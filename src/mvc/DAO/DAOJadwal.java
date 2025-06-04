@@ -24,9 +24,9 @@ import mvc.Model.MataPelajaran;
 public class DAOJadwal implements IJadwal{
     Connection connection;
     final String insert = "INSERT INTO jadwal (jadwalId, hari, jamMulai, jamSelesai, kelasId, nipGuru, kodeMapel) VALUES (?, ?, ?, ?, ?, ?, ?);";
-    final String update = "UPDATE jadwal set jadwalId=?, hari=?, jamMulai=?, jamSelesai=?, kelasId=?, nipGuru=?, kodeMapel=?, where id=? ;";
+    final String update = "UPDATE jadwal set jadwalId=?, hari=?, jamMulai=?, jamSelesai=?, kelasId=?, nipGuru=?, kodeMapel=? where id=? ;";
     final String delete = "DELETE FROM jadwal where id=? ;";
-    final String select = "SELECT * FROM jadwal;";
+    final String select = "SELECT jadwal.*,guru.nama AS namaguru FROM jadwal INNER JOIN guru ON jadwal.nipGuru = guru.nip;";
     final String carijadwal = "SELECT * FROM jadwal where hari like ?";
     final String selectguru = "SELECT * FROM guru";
     final String selectmatapelajaran = "SELECT * FROM matapelajaran";
@@ -40,18 +40,16 @@ public class DAOJadwal implements IJadwal{
          PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(insert);
-            statement.setString(1, j.getHari());
-            statement.setString(2, j.getJamMulai());
-            statement.setString(3, j.getJamSelesai());
-            statement.setString(4, j.getKelasId());
-            statement.setString(5, j.getKodeMapel());
+            statement.setString(1, j.getJadwalId());
+            statement.setString(2, j.getHari());
+            statement.setString(3, j.getJamMulai());
+            statement.setString(4, j.getJamSelesai());
+            statement.setString(5, j.getKelasId());
+            statement.setString(7, j.getKodeMapel());
             statement.setString(6, j.getNipGuru());
-            ResultSet rs = statement.getGeneratedKeys();
-            while (rs.next()){
-                j.setJadwalId(rs.getString(1));
-            }
+            statement.executeUpdate();
         } catch (SQLException ex){
-            System.out.println("Berhasil Input YEY!!!");
+            System.out.println(ex.getMessage());
         } finally {
             try {
                 statement.close();
@@ -66,17 +64,18 @@ public class DAOJadwal implements IJadwal{
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(update);
-            statement.setString(1, j.getHari());
-            statement.setString(2, j.getJamMulai());
-            statement.setString(3, j.getJamSelesai());
-            statement.setString(4, j.getKelasId());
-            statement.setString(5, j.getKodeMapel());
+            statement.setString(1, j.getJadwalId());
+            statement.setString(2, j.getHari());
+            statement.setString(3, j.getJamMulai());
+            statement.setString(4, j.getJamSelesai());
+            statement.setString(5, j.getKelasId());
             statement.setString(6, j.getNipGuru());
+            statement.setString(7, j.getKodeMapel());
             statement.setInt(8, j.getId());
             statement.executeUpdate(); 
             
         } catch (SQLException ex){
-            System.out.println("Berhasil Update Yeyy");
+            System.out.println(ex.getMessage());
         } finally {
             try {
                 statement.close();
@@ -121,8 +120,9 @@ public class DAOJadwal implements IJadwal{
                 j.setJamMulai(rs.getString("jamMulai"));
                 j.setJamSelesai(rs.getString("jamSelesai"));
                 j.setKelasId(rs.getString("kelasId"));
-                j.setNipGuru(rs.getString("nipGuru"));
+                j.setNipGuru(rs.getString("nipGuru")+ " - " + rs.getString("namaguru"));
                 j.setKodeMapel(rs.getString("kodeMapel"));
+//                j.setNamaGuru(rs.getString("namaguru"));
                 lb.add(j);
             }
         } catch (SQLException ex){
@@ -156,52 +156,4 @@ public class DAOJadwal implements IJadwal{
         }
         return lb;
     }
-
-    @Override
-    public List<Guru> getAllGuru() {
-        List<Guru> lb = null;
-        try{
-            lb = new ArrayList<Guru>();
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(selectguru);
-            while (rs.next()) {
-                Guru b = new Guru();
-                b.setId(rs.getInt("id"));
-                b.setNip(rs.getString("nip"));
-                b.setNama(rs.getString("nama"));
-                b.setAlamat(rs.getString("alamat"));
-                lb.add(b);
-            }
-        }catch (SQLException ex){
-            Logger.getLogger(DAOGuru.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return lb;
-    }
-
-    @Override
-    public List<MataPelajaran> getAllMataPelajaran() {
-        List<MataPelajaran> lb = null;
-       try
-       {
-           lb = new ArrayList<MataPelajaran>();
-           Statement st = connection.createStatement();
-           ResultSet rs = st.executeQuery(selectmatapelajaran);
-           
-           while(rs.next())
-           {
-               MataPelajaran b = new MataPelajaran();
-               b.setId(rs.getInt("id"));
-               b.setKodeMapel(rs.getString("kodeMapel"));
-               b.setNamaMapel(rs.getString("namaMapel"));
-               lb.add(b);
-           }
-           
-       }catch(SQLException ex)
-       {
-           Logger.getLogger(DAOMataPelajaran.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       
-       return lb;}
-   
 }
