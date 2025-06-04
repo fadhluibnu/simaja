@@ -55,7 +55,7 @@ public class ControllerAdmin {
     this.id = lAdmin.get(row).getId();
     frame.getAdminId().setText(lAdmin.get(row).getAdminId().toString());
     frame.getEmail().setText(lAdmin.get(row).getEmail());
-
+frame.getPilihUkuran().setSelectedItem(lAdmin.get(row).getPilihUkuran());
     frame.getNama().setText(lAdmin.get(row).getNama());
     frame.getNoTelp().setText(lAdmin.get(row).getNoTelp());
     frame.getPassword().setText(lAdmin.get(row).getPassword());
@@ -76,13 +76,14 @@ public class ControllerAdmin {
                 !frame.getUsername().getText().trim().isEmpty() & 
 
                 frame.getIsActive().getSelectedIndex() != 0 & 
+                frame.getPilihUkuran().getSelectedIndex() != 0 & 
                 frame.getRole().getSelectedIndex() != 0 
           )
         {
             Admin b = new Admin();
             b.setAdminId(frame.getAdminId().getText());
             b.setEmail(frame.getEmail().getText());
-
+            b.setPilihUkuran(frame.getPilihUkuran().getSelectedItem().toString());
             b.setNama(frame.getAdminId().getText());
             b.setNoTelp(frame.getEmail().getText());
             b.setPassword(frame.getAdminId().getText());
@@ -108,7 +109,7 @@ public class ControllerAdmin {
         frame.getUsername().setText("");
         frame.getIsActive().setSelectedIndex(0);
         frame.getRole().setSelectedIndex(0);
-
+        frame.getPilihUkuran().setSelectedIndex(0);
     }
     public void update(){
         if(
@@ -120,18 +121,20 @@ public class ControllerAdmin {
                 !frame.getPassword().getText().trim().isEmpty() & 
                 !frame.getUsername().getText().trim().isEmpty() & 
                 frame.getIsActive().getSelectedIndex() != 0 & 
+                  frame.getPilihUkuran().getSelectedIndex() != 0 & 
                 frame.getRole().getSelectedIndex() != 0 
           )
         {
             Admin b = new Admin();
             b.setAdminId(frame.getAdminId().getText());
             b.setEmail(frame.getEmail().getText());
-    
-            b.setNama(frame.getAdminId().getText());
-            b.setNoTelp(frame.getEmail().getText());
-            b.setPassword(frame.getAdminId().getText());
-            b.setUsername(frame.getEmail().getText());
+       
+            b.setNama(frame.getNama().getText());
+            b.setNoTelp(frame.getNoTelp().getText());
+            b.setPassword(frame.getPassword().getText());
+            b.setUsername(frame.getUsername().getText());
             b.setIsActive(frame.getIsActive().getSelectedItem().toString());
+            b.setPilihUkuran(frame.getPilihUkuran().getSelectedItem().toString());
             b.setRole(frame.getRole().getSelectedItem().toString());
             b.setId(this.id);
             

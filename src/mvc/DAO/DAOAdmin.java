@@ -22,11 +22,11 @@ import java.util.logging.Logger;
 public class DAOAdmin implements IAdmin {
     Connection connection;
 
-    final String insert = "INSERT INTO admin (adminId, username, password, nama, email, noTelp, role, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-    final String update = "UPDATE admin SET adminid=?, username=?, password=?, nama=?, email=?, noTelp=?, role=?, isActive=? WHERE id=?;";
+    final String insert = "INSERT INTO admin (adminId, username, password, nama, email, noTelp, role, isActive, PilihUkuran) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    final String update = "UPDATE admin SET adminid=?, username=?, password=?, nama=?, email=?, noTelp=?, role=?, isActive=?, PilihUkuran=? WHERE id=?;";
     final String delete = "DELETE FROM admin WHERE id=?;";
     final String select = "SELECT * FROM admin;";
-    final String carinamaadmin = "SELECT * FROM admin WHERE username LIKE ?;";
+    final String carinamaadmin = "SELECT * FROM admin WHERE admin LIKE ?;";
     
     
      public DAOAdmin() {
@@ -48,7 +48,7 @@ public class DAOAdmin implements IAdmin {
         statement.setString(6, b.getNoTelp());
         statement.setString(7, b.getRole());
         statement.setString(8, b.getIsActive());
-       
+       statement.setString(9, b.getPilihUkuran());
         statement.executeUpdate();
 
 
@@ -79,7 +79,7 @@ public class DAOAdmin implements IAdmin {
         statement.setString(6, b.getNoTelp());
         statement.setString(7, b.getRole());
         statement.setString(8, b.getIsActive());
-           
+           statement.setString(9, b.getPilihUkuran());
         statement.setInt(10, b.getId());
 
         statement.executeUpdate();
@@ -137,6 +137,7 @@ public class DAOAdmin implements IAdmin {
             b.setNoTelp(rs.getString("noTelp"));
             b.setRole(rs.getString("role"));
             b.setIsActive(rs.getString("isActive"));
+            b.setPilihUkuran(rs.getString("PilihUkuran"));
             lb.add(b);
         }
 
@@ -172,6 +173,7 @@ public class DAOAdmin implements IAdmin {
                 b.setNoTelp(rs.getString("noTelp"));
                 b.setRole(rs.getString("role"));
                 b.setIsActive(rs.getString("isActive"));
+                b.setPilihUkuran(rs.getString("PilihUkuran"));
                 lb.add(b);
             }
 

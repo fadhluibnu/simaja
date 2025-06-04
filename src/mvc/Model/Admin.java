@@ -16,7 +16,7 @@ public class Admin {
     private String password;
     private String nama;
     private String email;
-    private String alamat;
+    private Integer PilihUkuran;
     private String noTelp;
     private String role;
     private String isActive;
@@ -144,7 +144,19 @@ public class Admin {
     public void setIsActive(String isActive) {
         this.isActive = isActive;
     }
+    /**
+     * @return the isActive
+     */
+    public String getPilihUkuran() {
+        return isActive;
+    }
 
+    /**
+     * @param isActive the isActive to set
+     */
+    public void setPilihUkuran(String PilihUkuran) {
+        this.isActive = isActive;
+    }
   
     /**
      * @return the adminId

@@ -23,7 +23,7 @@ public class TabelModelAdmin extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 9;
+        return 10;
     }
 
     @Override
@@ -47,7 +47,8 @@ public class TabelModelAdmin extends AbstractTableModel {
                 return lb.get(rowIndex).getRole();
             case 8:
                 return lb.get(rowIndex).getIsActive();
-            
+             case 9:
+                return lb.get(rowIndex).getPilihUkuran();
             default:
                 return null;
         }
@@ -74,7 +75,8 @@ public class TabelModelAdmin extends AbstractTableModel {
                 return "Role";
             case 8:
                 return "Is Active";
-
+             case 9:
+                return "Pilih Ukuran";
             default:
                 return null;
         }
