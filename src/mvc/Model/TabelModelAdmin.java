@@ -47,6 +47,7 @@ public class TabelModelAdmin extends AbstractTableModel {
                 return lb.get(rowIndex).getRole();
             case 8:
                 return lb.get(rowIndex).getIsActive();
+            
             default:
                 return null;
         }
@@ -73,6 +74,7 @@ public class TabelModelAdmin extends AbstractTableModel {
                 return "Role";
             case 8:
                 return "Is Active";
+
             default:
                 return null;
         }

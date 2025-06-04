@@ -16,6 +16,7 @@ public class Admin {
     private String password;
     private String nama;
     private String email;
+    private String alamat;
     private String noTelp;
     private String role;
     private String isActive;
@@ -102,8 +103,7 @@ public class Admin {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    /**
+       /**
      * @return the noTelp
      */
     public String getNoTelp() {

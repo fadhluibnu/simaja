@@ -13,6 +13,7 @@ public interface IAdmin {
     public void insert(Admin b);
     public void update(Admin b);
     public void delete(int id);
+
     public List<Admin> getAll();
     public List<Admin> getCariNama(String nama);
 }
