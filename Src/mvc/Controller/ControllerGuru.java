@@ -152,5 +152,16 @@ public class ControllerGuru {
         }
     }
 
+    /**
+     * Authenticate guru login
+     * 
+     * @param username Guru username
+     * @param password Guru password
+     * @return Guru object if authentication successful, null otherwise
+     */
+    public Guru login(String username, String password) {
+        DAOGuru dao = new DAOGuru();
+        return dao.login(username, password);
+    }
 }
 

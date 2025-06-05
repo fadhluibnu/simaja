@@ -141,4 +141,16 @@ public class ControllerAdmin {
         }
     }
 
+    /**
+     * Authenticate admin login
+     *
+     * @param username Admin username
+     * @param password Admin password
+     * @return Admin object if authentication successful, null otherwise
+     */
+    public Admin login(String username, String password) {
+        DAOAdmin dao = new DAOAdmin();
+        return dao.login(username, password);
+    }
+
 }

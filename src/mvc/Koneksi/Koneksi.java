@@ -19,6 +19,7 @@ public class Koneksi {
             data.setDatabaseName("simaja");
             data.setUser("root");
             data.setPassword("WhateverPassword");
+            // WhateverPassword
             try {
                 con = data.getConnection();
             } catch (SQLException ex) {

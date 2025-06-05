@@ -779,7 +779,10 @@ public class FormAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_CarinamaActionPerformed
 
     private void KembalikeberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembalikeberandaActionPerformed
-        // TODO add your handling code here:
+        // Go back to Beranda
+        Beranda beranda = new Beranda();
+        beranda.setVisible(true);
+        this.dispose(); // Close the current form
     }//GEN-LAST:event_KembalikeberandaActionPerformed
 
     private void CaributtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaributtonActionPerformed

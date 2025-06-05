@@ -49,6 +49,7 @@ public class FormGuruNew extends javax.swing.JFrame {
     public javax.swing.JButton getBtnEdit() {
         return BtnEdit;
     }
+    
 
     /**
      * @return the BtnSimpan
@@ -83,13 +84,6 @@ public class FormGuruNew extends javax.swing.JFrame {
      */
     public javax.swing.JTextField getEmailGuru() {
         return EmailGuru;
-    }
-
-    /**
-     * @return the KmblGuru
-     */
-    public javax.swing.JTextField getKmblGuru() {
-        return KmblGuru;
     }
 
     /**
@@ -247,7 +241,6 @@ public class FormGuruNew extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        KmblGuru = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         NipGuru = new javax.swing.JTextField();
@@ -276,6 +269,7 @@ public class FormGuruNew extends javax.swing.JFrame {
         BtnEdit = new javax.swing.JButton();
         BtnDelete = new javax.swing.JButton();
         BtnReset = new javax.swing.JButton();
+        Kembalikeberanda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -283,14 +277,6 @@ public class FormGuruNew extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Guru");
-
-        KmblGuru.setBackground(new java.awt.Color(51, 102, 255));
-        KmblGuru.setText("Kembali Ke Beranda ");
-        KmblGuru.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KmblGuruActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Informasi Akun");
@@ -390,6 +376,13 @@ public class FormGuruNew extends javax.swing.JFrame {
             }
         });
 
+        Kembalikeberanda.setText("Kembali Ke Beranda");
+        Kembalikeberanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KembalikeberandaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -430,9 +423,8 @@ public class FormGuruNew extends javax.swing.JFrame {
                                 .addComponent(NmaGuru)
                                 .addComponent(AlmtGuru)))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(16, 16, 16)
-                            .addComponent(KmblGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(322, 322, 322)
+                            .addComponent(Kembalikeberanda)
+                            .addGap(386, 386, 386)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(BtnSimpan)
@@ -442,7 +434,7 @@ public class FormGuruNew extends javax.swing.JFrame {
                         .addComponent(BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(BtnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -451,16 +443,16 @@ public class FormGuruNew extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(BtnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(KmblGuru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
+                        .addGap(13, 13, 13)
+                        .addComponent(Kembalikeberanda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -518,10 +510,6 @@ public class FormGuruNew extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void KmblGuruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KmblGuruActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KmblGuruActionPerformed
-
     private void TblGuruNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblGuruNMouseClicked
         // TODO add your handling code here:
         int row = TblGuruN.rowAtPoint(evt.getPoint());
@@ -566,9 +554,23 @@ public class FormGuruNew extends javax.swing.JFrame {
         cbt.isiTableCariNama();
     }//GEN-LAST:event_BtnCariActionPerformed
 
+    private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
+        // Go back to Beranda
+        Beranda beranda = new Beranda();
+        beranda.setVisible(true);
+        this.dispose(); // Close the current form
+    }//GEN-LAST:event_BtnBackActionPerformed
+
     private void CarinamaGuruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarinamaGuruActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CarinamaGuruActionPerformed
+
+    private void KembalikeberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembalikeberandaActionPerformed
+        // TODO add your handling code here:
+        Beranda beranda = new Beranda();
+        beranda.setVisible(true);
+        this.dispose(); // Close the current form
+    }//GEN-LAST:event_KembalikeberandaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -615,7 +617,7 @@ public class FormGuruNew extends javax.swing.JFrame {
     private javax.swing.JTextField CarinamaGuru;
     private javax.swing.JComboBox<String> CmbGuru;
     private javax.swing.JTextField EmailGuru;
-    private javax.swing.JTextField KmblGuru;
+    private javax.swing.JButton Kembalikeberanda;
     private javax.swing.JTextField NipGuru;
     private javax.swing.JTextField NmaGuru;
     private javax.swing.JTextField NotlpGuru;

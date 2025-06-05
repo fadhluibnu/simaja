@@ -177,7 +177,48 @@ public class DAOAdmin implements IAdmin {
         return lb;
     }
     
-}    
+    /**
+     * Authenticate admin credentials
+     * 
+     * @param username Admin username
+     * @param password Admin password
+     * @return Admin object if authentication successful, null otherwise
+     */
+    public Admin login(String username, String password) {
+        Admin admin = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        
+        try {
+            String query = "SELECT * FROM admin WHERE username = ? AND password = ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+                admin = new Admin();
+                admin.setId(rs.getInt("id"));
+                admin.setAdminId(rs.getString("adminId"));
+                admin.setUsername(rs.getString("username"));
+                admin.setNama(rs.getString("nama"));
+                admin.setEmail(rs.getString("email"));
+                admin.setNoTelp(rs.getString("noTelp"));
+                admin.setRole(rs.getString("role"));
+                admin.setIsActive(rs.getString("isActive"));
+            }
+            
+            rs.close();
+            statement.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error in admin login: " + e.getMessage());
+        }
+        
+        return admin;
+    }
+}
 
 
 

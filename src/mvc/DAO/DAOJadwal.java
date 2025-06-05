@@ -27,7 +27,7 @@ public class DAOJadwal implements IJadwal{
     final String update = "UPDATE jadwal set jadwalId=?, hari=?, jamMulai=?, jamSelesai=?, kelasId=?, nipGuru=?, kodeMapel=? where id=? ;";
     final String delete = "DELETE FROM jadwal where id=? ;";
     final String select = "SELECT jadwal.*,guru.nama AS namaguru FROM jadwal INNER JOIN guru ON jadwal.nipGuru = guru.nip;";
-    final String carijadwal = "SELECT * FROM jadwal where hari like ?";
+    final String carijadwal = "SELECT * FROM jadwal WHERE hari like ?";
     final String selectguru = "SELECT * FROM guru";
     final String selectmatapelajaran = "SELECT * FROM matapelajaran";
     

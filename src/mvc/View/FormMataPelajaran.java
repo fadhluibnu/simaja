@@ -176,7 +176,7 @@ public class FormMataPelajaran extends javax.swing.JFrame {
      * @return the kembalikeberanda
      */
     public javax.swing.JButton getKembalikeberanda() {
-        return kembalikeberanda;
+        return Kembalikeberanda;
     }
 
     /**
@@ -228,7 +228,7 @@ public class FormMataPelajaran extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        kembalikeberanda = new javax.swing.JButton();
+        Kembalikeberanda = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         kodeMapel = new javax.swing.JTextField();
@@ -264,9 +264,14 @@ public class FormMataPelajaran extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Mata Pelajaran");
 
-        kembalikeberanda.setBackground(new java.awt.Color(255, 255, 255));
-        kembalikeberanda.setForeground(new java.awt.Color(0, 0, 0));
-        kembalikeberanda.setText("Kembali Ke Beranda");
+        Kembalikeberanda.setBackground(new java.awt.Color(255, 255, 255));
+        Kembalikeberanda.setForeground(new java.awt.Color(0, 0, 0));
+        Kembalikeberanda.setText("Kembali Ke Beranda");
+        Kembalikeberanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KembalikeberandaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -274,7 +279,7 @@ public class FormMataPelajaran extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(kembalikeberanda)
+                .addComponent(Kembalikeberanda)
                 .addGap(240, 240, 240)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -285,7 +290,7 @@ public class FormMataPelajaran extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(kembalikeberanda))
+                    .addComponent(Kembalikeberanda))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -448,6 +453,11 @@ public class FormMataPelajaran extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelMataPelajaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelMataPelajaranMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelMataPelajaran);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -460,6 +470,11 @@ public class FormMataPelajaran extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(204, 0, 204));
         jButton5.setText("Cari");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -526,15 +541,47 @@ public class FormMataPelajaran extends javax.swing.JFrame {
 
     private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
         // TODO add your handling code here:
+        String nip = cbt.getSelectedGuruNIP(nipPengajar);
+        cbt.update(nip);
+        cbt.isiTable();
+        cbt.reset();
     }//GEN-LAST:event_btneditActionPerformed
 
     private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
         // TODO add your handling code here:
+        cbt.delete();
+        cbt.isiTable();
+        cbt.reset();
     }//GEN-LAST:event_btndeleteActionPerformed
 
     private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnresetActionPerformed
+
+    private void tabelMataPelajaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMataPelajaranMouseClicked
+        // TODO add your handling code here:
+        int row = tabelMataPelajaran.rowAtPoint(evt.getPoint());
+        cbt.isiField(row);
+    }//GEN-LAST:event_tabelMataPelajaranMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        cbt.cariNama();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void KembalikeberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembalikeberandaActionPerformed
+        // TODO add your handling code here:
+        Beranda beranda = new Beranda();
+        beranda.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_KembalikeberandaActionPerformed
+    
+    private void kembalikeberandaActionPerformed(java.awt.event.ActionEvent evt) {
+        // Go back to Beranda
+        Beranda beranda = new Beranda();
+        beranda.setVisible(true);
+        this.dispose(); // Close the current form
+    }
 
     /**
      * @param args the command line arguments
@@ -574,6 +621,7 @@ public class FormMataPelajaran extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Kembalikeberanda;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnreset;
@@ -595,7 +643,6 @@ public class FormMataPelajaran extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton kembalikeberanda;
     private javax.swing.JTextField kkm;
     private javax.swing.JTextField kodeMapel;
     private javax.swing.JTextField namaMapel;

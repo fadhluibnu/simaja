@@ -164,7 +164,7 @@ public class FormKelas extends javax.swing.JFrame {
      * @return the kembalikeberanda
      */
     public javax.swing.JButton getKembalikeberanda() {
-        return kembalikeberanda;
+        return Kembalikeberanda;
     }
 
     /**
@@ -211,7 +211,7 @@ public class FormKelas extends javax.swing.JFrame {
         Cari = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        kembalikeberanda = new javax.swing.JButton();
+        Kembalikeberanda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -303,9 +303,14 @@ public class FormKelas extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Kelas");
 
-        kembalikeberanda.setBackground(new java.awt.Color(255, 255, 255));
-        kembalikeberanda.setForeground(new java.awt.Color(0, 0, 0));
-        kembalikeberanda.setText("Kembali Ke Beranda");
+        Kembalikeberanda.setBackground(new java.awt.Color(255, 255, 255));
+        Kembalikeberanda.setForeground(new java.awt.Color(0, 0, 0));
+        Kembalikeberanda.setText("Kembali Ke Beranda");
+        Kembalikeberanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KembalikeberandaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -313,7 +318,7 @@ public class FormKelas extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(kembalikeberanda)
+                .addComponent(Kembalikeberanda)
                 .addGap(210, 210, 210)
                 .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -324,7 +329,7 @@ public class FormKelas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kembalikeberanda))
+                    .addComponent(Kembalikeberanda))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -460,12 +465,19 @@ public class FormKelas extends javax.swing.JFrame {
         // TODO add your handling code here:
         cbt.delete();
         cbt.isiTabel();
+        cbt.reset();
     }//GEN-LAST:event_HapusActionPerformed
 
-    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
+    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
         cbt.reset();
-    }//GEN-LAST:event_ResetActionPerformed
+    }      
+    private void KembalikeberandaActionPerformed(java.awt.event.ActionEvent evt) {
+        // Go back to Beranda
+        Beranda beranda = new Beranda();
+        beranda.setVisible(true);
+        this.dispose(); // Close the current form
+    }                                                
 
     /**
      * @param args the command line arguments
@@ -506,6 +518,7 @@ public class FormKelas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cari;
     private javax.swing.JButton Hapus;
+    private javax.swing.JButton Kembalikeberanda;
     private javax.swing.JTextField Kodekelas;
     private javax.swing.JTextField NamaKelas;
     private javax.swing.JButton Reset;
@@ -524,7 +537,6 @@ public class FormKelas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton kembalikeberanda;
     private javax.swing.JComboBox<String> nipWaliKelas;
     // End of variables declaration//GEN-END:variables
 }

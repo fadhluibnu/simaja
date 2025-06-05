@@ -159,4 +159,46 @@ public class DAOGuru implements IGuru {
         return lb;
     }
     
+    /**
+     * Authenticate guru credentials
+     * 
+     * @param username Guru username
+     * @param password Guru password
+     * @return Guru object if authentication successful, null otherwise
+     */
+    public Guru login(String username, String password) {
+        Guru guru = null;
+        PreparedStatement statement = null;
+        ResultSet rs = null;
+        
+        try {
+            String query = "SELECT * FROM guru WHERE username = ? AND password = ? AND isActive = 'aktif'";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            
+            rs = statement.executeQuery();
+            
+            if (rs.next()) {
+                guru = new Guru();
+                guru.setId(rs.getInt("id"));
+                guru.setNip(rs.getString("nip"));
+                guru.setUsername(rs.getString("username"));
+                guru.setNama(rs.getString("nama"));
+                guru.setAlamat(rs.getString("alamat"));
+                guru.setNoTelp(rs.getString("noTelp"));
+                guru.setEmail(rs.getString("email"));
+                guru.setIsActive(rs.getString("isActive"));
+            }
+            
+            rs.close();
+            statement.close();
+            
+        } catch (SQLException e) {
+            System.out.println("Error in guru login: " + e.getMessage());
+        }
+        
+        return guru;
+    }
+    
 }

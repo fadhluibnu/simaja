@@ -42,9 +42,9 @@ public class ControllerJadwal {
 
     Integer id;
 
-    private ArrayList<String> guruNipList = new ArrayList<>();
-    private ArrayList<String> kelasList = new ArrayList<>();
-    private ArrayList<String> mapelList = new ArrayList<>();
+//    private ArrayList<String> guruNipList = new ArrayList<>();
+//    private ArrayList<String> kelasList = new ArrayList<>();
+//    private ArrayList<String> mapelList = new ArrayList<>();
 
     public ControllerJadwal(FormJadwal frame) {
         this.frame = frame;
@@ -99,9 +99,35 @@ public class ControllerJadwal {
         frame.getHari().setSelectedItem(ljadwal.get(row).getHari());
         frame.getJamMulai().setText(ljadwal.get(row).getJamMulai());
         frame.getJamSelesai().setText(ljadwal.get(row).getJamSelesai());
-        frame.getKelasId().setSelectedItem(lkelas.get(row).getKelasId());
-        frame.getNipGuru().setSelectedItem(lguru.get(row).getNip());
-        frame.getKodeMapel().setSelectedItem(lmatapelajaran.get(row).getKodeMapel());
+        
+        // --- SOLUSI MASALAH 1 & 2 DIMULAI DI SINI ---
+        // Mencari dan mengatur Kelas
+        String selectedKelasId = ljadwal.get(row).getKelasId();
+        for (int i = 0; i < lkelas.size(); i++) {
+            if (lkelas.get(i).getKelasId().equals(selectedKelasId)) {
+                frame.getKelasId().setSelectedItem(formatKelasForComboBox(lkelas.get(i)));
+                break;
+            }
+        }
+
+        // Mencari dan mengatur Guru
+        String selectedNipGuruFormatted = ljadwal.get(row).getNipGuru(); // Ini akan berisi "NIP - NamaGuru"
+        String selectedNipGuru = selectedNipGuruFormatted.split(" - ")[0]; // Ambil hanya NIP nya
+        for (int i = 0; i < lguru.size(); i++) {
+            if (lguru.get(i).getNip().equals(selectedNipGuru)) {
+                frame.getNipGuru().setSelectedItem(formatGuruForComboBox(lguru.get(i)));
+                break;
+            }
+        }
+
+        // Mencari dan mengatur Mata Pelajaran
+        String selectedKodeMapel = ljadwal.get(row).getKodeMapel();
+        for (int i = 0; i < lmatapelajaran.size(); i++) {
+            if (lmatapelajaran.get(i).getKodeMapel().equals(selectedKodeMapel)) {
+                frame.getKodeMapel().setSelectedItem(formatMatapelajaranForComboBox(lmatapelajaran.get(i)));
+                break;
+            }
+        }
     }
 
     public void insert(String nipguru, String idkelas, String kodemapel) {
@@ -167,7 +193,7 @@ public class ControllerJadwal {
     }
 
     public String formatGuruForComboBox(Guru guru) {
-        return guru.getNip() + " - " + guru.getNip();
+        return guru.getNip() + " - " + guru.getNama(); // Menggunakan getNama() untuk nama guru
     }
 
     public String formatKelasForComboBox(Kelas kelas) {
@@ -187,13 +213,13 @@ public class ControllerJadwal {
 
         // Dapatkan NIP guru berdasarkan indeks yang dipilih
         // Perlu dikurangi 1 karena indeks 0 adalah placeholder
-        int arrayIndex = selectedIndex - 1;
-
-        if (arrayIndex >= 0 && arrayIndex < guruNipList.size()) {
-            return guruNipList.get(arrayIndex);
-        } else {
-            return null;
+        String selectedItem = (String) comboBox.getSelectedItem();
+        // Memisahkan NIP dari string format "NIP - Nama Guru"
+        String[] parts = selectedItem.split(" - ");
+        if (parts.length > 0) {
+            return parts[0];
         }
+        return null;
     }
 
     public String getSelectedIdKelas(JComboBox<String> comboBox) {
@@ -203,15 +229,12 @@ public class ControllerJadwal {
             return null; // Tidak ada guru yang dipilih atau placeholder dipilih
         }
 
-        // Dapatkan NIP guru berdasarkan indeks yang dipilih
-        // Perlu dikurangi 1 karena indeks 0 adalah placeholder
-        int arrayIndex = selectedIndex - 1;
-
-        if (arrayIndex >= 0 && arrayIndex < kelasList.size()) {
-            return kelasList.get(arrayIndex);
-        } else {
-            return null;
+        String selectedItem = (String) comboBox.getSelectedItem();
+        String[] parts = selectedItem.split(" - ");
+        if (parts.length > 0) {
+            return parts[0];
         }
+        return null;
     }
 
     public String getSelectedKodeMapel(JComboBox<String> comboBox) {
@@ -221,83 +244,38 @@ public class ControllerJadwal {
             return null; // Tidak ada guru yang dipilih atau placeholder dipilih
         }
 
-        // Dapatkan NIP guru berdasarkan indeks yang dipilih
-        // Perlu dikurangi 1 karena indeks 0 adalah placeholder
-        int arrayIndex = selectedIndex - 1;
-
-        if (arrayIndex >= 0 && arrayIndex < mapelList.size()) {
-            return mapelList.get(arrayIndex);
-        } else {
-            return null;
+        String selectedItem = (String) comboBox.getSelectedItem();
+        String[] parts = selectedItem.split(" - ");
+        if (parts.length > 0) {
+            return parts[0];
         }
+        return null;
     }
 
     public void isiComboGuru(JComboBox<String> comboBox) {
-        // Ambil data guru
         lguru = implGuru.getAll();
-
-        // Reset array
-        guruNipList.clear();
-
-        // Kosongkan combo box terlebih dahulu
         comboBox.removeAllItems();
-
-        // Tambahkan item placeholder
         comboBox.addItem("-- Pilih Guru --");
-
-        // Tambahkan setiap guru dengan format yang diinginkan
         for (Guru guru : lguru) {
-            // Tambahkan ke ComboBox
             comboBox.addItem(formatGuruForComboBox(guru));
-
-            // Simpan NIP guru ke array
-            guruNipList.add(guru.getNip());
         }
     }
 
     public void isiComboKelas(JComboBox<String> comboBox) {
-        // Ambil data guru
         lkelas = implKelas.getAll();
-
-        // Reset array
-        kelasList.clear();
-
-        // Kosongkan combo box terlebih dahulu
         comboBox.removeAllItems();
-
-        // Tambahkan item placeholder
         comboBox.addItem("-- Pilih Kelas --");
-
-        // Tambahkan setiap guru dengan format yang diinginkan
         for (Kelas kelas : lkelas) {
-            // Tambahkan ke ComboBox
             comboBox.addItem(formatKelasForComboBox(kelas));
-
-            // Simpan NIP guru ke array
-            kelasList.add(kelas.getKelasId());
         }
     }
 
     public void isiComboMataPelajaran(JComboBox<String> comboBox) {
-        // Ambil data guru
         lmatapelajaran = implMapel.getAll();
-
-        // Reset array
-        mapelList.clear();
-
-        // Kosongkan combo box terlebih dahulu
         comboBox.removeAllItems();
-
-        // Tambahkan item placeholder
         comboBox.addItem("-- Pilih Mapel --");
-
-        // Tambahkan setiap guru dengan format yang diinginkan
         for (MataPelajaran mapel : lmatapelajaran) {
-            // Tambahkan ke ComboBox
             comboBox.addItem(formatMatapelajaranForComboBox(mapel));
-
-            // Simpan NIP guru ke array
-            mapelList.add(mapel.getKodeMapel());
         }
     }
 }

@@ -28,7 +28,7 @@ public class FormJadwal extends javax.swing.JFrame {
      * @return the btnBackJadwal
      */
     public javax.swing.JButton getBtnBackJadwal() {
-        return btnBackJadwal;
+        return Kembalikeberanda;
     }
 
     /**
@@ -257,7 +257,7 @@ public class FormJadwal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnBackJadwal = new javax.swing.JButton();
+        Kembalikeberanda = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -327,12 +327,12 @@ public class FormJadwal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel1.setText("JADWAL MANAGEMEN SYSTEM");
 
-        btnBackJadwal.setBackground(new java.awt.Color(153, 255, 255));
-        btnBackJadwal.setForeground(new java.awt.Color(0, 0, 0));
-        btnBackJadwal.setText("BACK");
-        btnBackJadwal.addActionListener(new java.awt.event.ActionListener() {
+        Kembalikeberanda.setBackground(new java.awt.Color(153, 255, 255));
+        Kembalikeberanda.setForeground(new java.awt.Color(0, 0, 0));
+        Kembalikeberanda.setText("BACK");
+        Kembalikeberanda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackJadwalActionPerformed(evt);
+                KembalikeberandaActionPerformed(evt);
             }
         });
 
@@ -342,7 +342,7 @@ public class FormJadwal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(btnBackJadwal)
+                .addComponent(Kembalikeberanda)
                 .addGap(172, 172, 172)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -353,7 +353,7 @@ public class FormJadwal extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBackJadwal))
+                    .addComponent(Kembalikeberanda))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -660,26 +660,24 @@ public class FormJadwal extends javax.swing.JFrame {
         cbt.reset();
     }//GEN-LAST:event_btnUbahJadwalActionPerformed
 
-    private void btnHapusJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusJadwalActionPerformed
+    private void btnHapusJadwalActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
         cbt.delete();
-        cbt.isiTabel();
-        cbt.reset();
-    }//GEN-LAST:event_btnHapusJadwalActionPerformed
-
-    private void btnBatalJatwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalJatwalActionPerformed
+        cbt.isiTabel();                                                                                                                                                         
         // TODO add your handling code here:
         cbt.reset();
-    }//GEN-LAST:event_btnBatalJatwalActionPerformed
+    }                                              
 
-    private void kodeMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kodeMapelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kodeMapelActionPerformed
+    private void KembalikeberandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembalikeberandaActionPerformed
+        // Go back to Beranda
+        Beranda beranda = new Beranda();
+        beranda.setVisible(true);
+        this.dispose(); // Close the current form
+    }//GEN-LAST:event_KembalikeberandaActionPerformed
 
-    private void btnBackJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackJadwalActionPerformed
+    private void kodeMapelActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnBackJadwalActionPerformed
+    }                                             
 
     private void carijadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carijadwalActionPerformed
         // TODO add your handling code here:
@@ -690,6 +688,11 @@ public class FormJadwal extends javax.swing.JFrame {
         int row = dsnTabelJadwal.rowAtPoint(evt.getPoint());
         cbt.isiField(row);
     }//GEN-LAST:event_dsnTabelJadwalMouseClicked
+
+    private void btnBatalJatwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalJatwalActionPerformed
+        // TODO add your handling code here:
+        cbt.reset();
+    }//GEN-LAST:event_btnBatalJatwalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -728,7 +731,7 @@ public class FormJadwal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBackJadwal;
+    private javax.swing.JButton Kembalikeberanda;
     private javax.swing.JButton btnBatalJatwal;
     private javax.swing.JButton btnCariHari;
     private javax.swing.JButton btnHapusJadwal;

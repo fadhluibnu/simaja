@@ -23,7 +23,7 @@ public class DAOMataPelajaran implements IMataPelajaran{
    final String update = "UPDATE matapelajaran set kodeMapel=?, namaMapel=?, kkm=?, deskripsi=?, nipPengajar=? WHERE id=?";
    final String delete = "DELETE FROM matapelajaran where id=?;";
    final String selectmatapelajaran = "SELECT matapelajaran.* , guru.nip, guru.nama AS namaGuru FROM matapelajaran LEFT JOIN guru ON matapelajaran.nipPengajar = guru.nip";
-   final String carimatapelajaran = "SELECT * FROM matapelajaran where nama like ?";
+   final String carimatapelajaran = "SELECT matapelajaran.* , guru.nip, guru.nama AS namaGuru FROM matapelajaran LEFT JOIN guru ON matapelajaran.nipPengajar = guru.nip WHERE matapelajaran.namaMapel LIKE ?";
    final String selectguru = "SELECT * FROM guru";
    
    public DAOMataPelajaran()
